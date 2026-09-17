@@ -76,7 +76,11 @@ function poetiqInit() {
 
     let controller = null;
     let initializing = false;
-    let pendingPlay = false;
+    // Browsers block autoplay without a real click, so a page-load resume
+    // attempt often lands here paused even though we asked it to play —
+    // track the REAL state so the toggle button always does the right thing
+    // next click, instead of trusting whether the panel happens to be open.
+    let lastIsPaused = true;
 
     function setupController(startPositionMs, autoplay) {
       if (initializing || controller) return;
@@ -87,9 +91,10 @@ function poetiqInit() {
           controller = c;
           controller.addListener("ready", () => {
             if (startPositionMs) controller.seek(Math.floor(startPositionMs / 1000));
-            if (autoplay || pendingPlay) controller.play();
+            if (autoplay) controller.play();
           });
           controller.addListener("playback_update", (e) => {
+            lastIsPaused = e.data.isPaused;
             poetiqSaveSoundState(e.data.isPaused, e.data.position);
             soundToggle.classList.toggle("is-playing", !e.data.isPaused);
           });
@@ -102,14 +107,16 @@ function poetiqInit() {
     }
 
     soundToggle.addEventListener("click", () => {
-      const isOpen = soundPanel.classList.toggle("is-open");
-      if (isOpen) {
-        if (controller) controller.play();
-        else {
-          pendingPlay = true;
-          setupController(0, true);
-        }
-      } else if (controller) {
+      if (!controller) {
+        soundPanel.classList.add("is-open");
+        setupController(0, true);
+        return;
+      }
+      if (lastIsPaused) {
+        soundPanel.classList.add("is-open");
+        controller.play();
+      } else {
+        soundPanel.classList.remove("is-open");
         controller.pause();
       }
     });
@@ -120,7 +127,11 @@ function poetiqInit() {
       }
     });
 
-    // Resume music that was playing when the visitor navigated here.
+    // Resume music that was playing when the visitor navigated here. This
+    // may get blocked by the browser's autoplay policy (no click has
+    // happened yet on this fresh page) — if so, playback_update reports
+    // isPaused:true and the toggle button's next click (a real gesture)
+    // will correctly resume it instead of mistakenly closing the panel.
     const savedSound = poetiqLoadSoundState();
     if (savedSound && savedSound.isPaused === false) {
       soundPanel.classList.add("is-open");
