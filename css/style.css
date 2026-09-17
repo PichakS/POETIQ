@@ -234,8 +234,16 @@ p { margin: 0 0 1em; }
   min-height: 82vh;
   display: flex;
   align-items: flex-end;
-  background: linear-gradient(180deg, rgba(43, 49, 25, 0.15), rgba(43, 49, 25, 0.78)),
-    url("../assets/scents/mist-by-the-lake.jpg") center/cover no-repeat;
+  /* mist-by-the-lake.jpg is a designed scent-story card (title + body copy
+     baked into the image), not a plain photo — a plain cover-fit crops
+     unpredictably by aspect ratio and can reveal that text (seen on mobile's
+     taller viewport). Zoomed in and anchored on just the vase artwork so no
+     text ever enters the crop, at any width. */
+  background-image: linear-gradient(180deg, rgba(43, 49, 25, 0.15), rgba(43, 49, 25, 0.78)),
+    url("../assets/scents/mist-by-the-lake.jpg");
+  background-repeat: no-repeat, no-repeat;
+  background-position: 0% 0%, 50% 38%;
+  background-size: auto, 220% auto;
   color: var(--frost);
 }
 
