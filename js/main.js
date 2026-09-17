@@ -21,6 +21,33 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = new Date().getFullYear();
   });
 
+  // Sound toggle: "Poet's Garden" original soundscape (Spotify embed, lazy-loaded)
+  const soundToggle = document.getElementById("sound-toggle");
+  const soundPanel = document.getElementById("sound-panel");
+  if (soundToggle && soundPanel) {
+    soundToggle.addEventListener("click", () => {
+      const isOpen = soundPanel.classList.toggle("is-open");
+      soundToggle.classList.toggle("is-playing", isOpen);
+      const slot = document.getElementById("sound-embed-slot");
+      if (isOpen && slot && !slot.hasChildNodes()) {
+        const iframe = document.createElement("iframe");
+        iframe.src = "https://open.spotify.com/embed/album/3Sd0hAXzAASuEsbJ8LBO5N?utm_source=generator&theme=0";
+        iframe.width = "100%";
+        iframe.height = "352";
+        iframe.style.border = "0";
+        iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+        iframe.loading = "lazy";
+        slot.appendChild(iframe);
+      }
+    });
+    document.addEventListener("click", (e) => {
+      if (!soundPanel.contains(e.target) && !soundToggle.contains(e.target)) {
+        soundPanel.classList.remove("is-open");
+        soundToggle.classList.remove("is-playing");
+      }
+    });
+  }
+
   // Shop page: build product grid + wire add-to-cart
   const shopGrid = document.querySelector("[data-shop-grid]");
   if (shopGrid && typeof POETIQ_PRODUCTS !== "undefined") {
