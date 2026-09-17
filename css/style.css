@@ -315,6 +315,19 @@ p { margin: 0 0 1em; }
   letter-spacing: 0.02em;
 }
 .product-card__size { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; margin-top: 6px; }
+.product-card__size--inline {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--almond);
+  opacity: 1;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.product-card__media.has-photo { padding: 0; background: #fff; }
+.product-card__media.has-photo img { width: 100%; height: 100%; object-fit: contain; }
 
 .product-card__body {
   padding: 20px 20px 24px;

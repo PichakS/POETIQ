@@ -27,15 +27,21 @@ document.addEventListener("DOMContentLoaded", () => {
     shopGrid.innerHTML = POETIQ_PRODUCTS.map(
       (p, i) => `
       <article class="product-card">
-        <div class="product-card__media" style="background:var(--${p.tone})">
-          <div>
-            <img class="symbol symbol--light" src="/assets/brand/symbol-dark.png" alt="">
-            <p class="product-card__media-label">${p.name}</p>
-            <p class="product-card__size">${p.size}</p>
-          </div>
-        </div>
+        ${
+          p.photo
+            ? `<div class="product-card__media has-photo">
+                <img src="/assets/products/${p.photo}" alt="${p.name}, ${p.size}">
+              </div>`
+            : `<div class="product-card__media" style="background:var(--${p.tone})">
+                <div>
+                  <img class="symbol symbol--light" src="/assets/brand/symbol-dark.png" alt="">
+                  <p class="product-card__media-label">${p.name}</p>
+                  <p class="product-card__size">${p.size}</p>
+                </div>
+              </div>`
+        }
         <div class="product-card__body">
-          <h3 class="product-card__name">${p.name}</h3>
+          <h3 class="product-card__name">${p.name} <span class="product-card__size product-card__size--inline">${p.size}</span></h3>
           <p class="product-card__desc">${p.desc}</p>
           <div class="field-row">
             <select class="scent-select" id="scent-${p.id}">

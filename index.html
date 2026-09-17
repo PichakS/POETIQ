@@ -159,20 +159,26 @@
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const wrap = document.querySelector("[data-home-featured]");
-    const featured = ["aroma-candle", "hill-tribe-reed-diffuser", "hill-tribe-room-spray", "wild-reed-diffuser"];
+    const featured = ["aroma-candle", "reed-diffuser", "room-spray", "aroma-oil"];
     wrap.innerHTML = featured.map((id) => {
       const p = POETIQ_PRODUCTS.find((x) => x.id === id);
       return `
         <article class="product-card">
-          <div class="product-card__media" style="background:var(--${p.tone})">
-            <div>
-              <img class="symbol" src="/assets/brand/symbol-dark.png" alt="">
-              <p class="product-card__media-label">${p.name}</p>
-              <p class="product-card__size">${p.size}</p>
-            </div>
-          </div>
+          ${
+            p.photo
+              ? `<div class="product-card__media has-photo">
+                  <img src="/assets/products/${p.photo}" alt="${p.name}, ${p.size}">
+                </div>`
+              : `<div class="product-card__media" style="background:var(--${p.tone})">
+                  <div>
+                    <img class="symbol" src="/assets/brand/symbol-dark.png" alt="">
+                    <p class="product-card__media-label">${p.name}</p>
+                    <p class="product-card__size">${p.size}</p>
+                  </div>
+                </div>`
+          }
           <div class="product-card__body">
-            <h3 class="product-card__name">${p.name}</h3>
+            <h3 class="product-card__name">${p.name} <span class="product-card__size product-card__size--inline">${p.size}</span></h3>
             <p class="product-card__desc">${p.desc}</p>
             <div class="field-row" style="justify-content:space-between;align-items:center;">
               <span class="product-card__price">${poetiqFormatBaht(p.price)}</span>
