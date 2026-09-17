@@ -168,6 +168,7 @@
 <script src="/js/products.js"></script>
 <script src="/js/cart.js"></script>
 <script src="/js/main.js"></script>
+<script src="/js/editor.js"></script>
 <script>
   document.addEventListener("poetiq:ready", () => {
     const wrap = document.querySelector("[data-home-featured]");
@@ -190,7 +191,7 @@
                 </div>`
           }
           <div class="product-card__body">
-            <h3 class="product-card__name">${p.name} <span class="product-card__size product-card__size--inline">${p.size}</span></h3>
+            <h3 class="product-card__name"><span class="product-card__name-text">${p.name}</span> <span class="product-card__size product-card__size--inline">${p.size}</span></h3>
             <p class="product-card__desc">${p.desc}</p>
             <div class="field-row" style="justify-content:space-between;align-items:center;">
               <span class="product-card__price">${poetiqFormatBaht(p.price)}</span>
@@ -201,18 +202,6 @@
       `;
     }).join("");
   });
-</script>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", (user) => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
 </script>
 </body>
 </html>

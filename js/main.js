@@ -83,7 +83,7 @@ function poetiqInit() {
               </div>`
         }
         <div class="product-card__body">
-          <h3 class="product-card__name">${p.name} <span class="product-card__size product-card__size--inline">${p.size}</span></h3>
+          <h3 class="product-card__name"><span class="product-card__name-text">${p.name}</span> <span class="product-card__size product-card__size--inline">${p.size}</span></h3>
           <p class="product-card__desc">${p.desc}</p>
           <div class="field-row">
             <select class="scent-select" id="scent-${p.id}">

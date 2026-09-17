@@ -733,3 +733,84 @@ select.scent-select {
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .hero { min-height: 92vh; }
 }
+
+/* ==========================================================================
+   On-page editor (logged-in owners only — pencils, floating controls, modal)
+   ========================================================================== */
+.poetiq-editable { outline: 1px dashed transparent; transition: outline-color 0.15s ease; }
+body.poetiq-edit-mode .poetiq-editable { outline-color: rgba(169, 143, 92, 0.5); outline-offset: 4px; }
+
+.poetiq-pencil {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; margin-left: 8px; vertical-align: middle;
+  background: var(--gold); color: var(--frost); border: none; border-radius: 50%;
+  font-size: 13px; line-height: 1; cursor: pointer; box-shadow: 0 2px 8px rgba(48,45,43,0.25);
+  transition: transform 0.15s ease; flex: none;
+}
+.poetiq-pencil:hover { transform: scale(1.12); }
+
+.poetiq-edit-fab-wrap {
+  position: fixed; left: 18px; bottom: 18px; z-index: 900;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+}
+.poetiq-edit-fab, .poetiq-design-fab, .poetiq-logout-fab {
+  font-family: var(--font-body); font-size: 0.85rem; font-weight: 500;
+  border: none; border-radius: 999px; cursor: pointer;
+  box-shadow: 0 8px 24px rgba(48,45,43,0.22);
+}
+.poetiq-edit-fab {
+  background: var(--moss); color: var(--frost); padding: 12px 20px;
+}
+.poetiq-edit-fab:hover { background: var(--moss-dark); }
+.poetiq-design-fab {
+  background: var(--frost); color: var(--graphite); width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center; padding: 0; font-size: 1.05rem;
+}
+.poetiq-logout-fab {
+  background: transparent; color: var(--warmgrey); box-shadow: none; padding: 4px 8px;
+  text-decoration: underline; font-size: 0.75rem;
+}
+
+.poetiq-editor-overlay {
+  position: fixed; inset: 0; background: rgba(48,45,43,0.55); z-index: 1000;
+  display: flex; align-items: center; justify-content: center; padding: 24px;
+}
+.poetiq-editor-modal {
+  background: var(--frost); border-radius: 12px; padding: 28px; width: 100%; max-width: 480px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+}
+.poetiq-editor-modal h4 { margin: 0 0 14px; font-family: var(--font-heading); font-size: 1.3rem; color: var(--moss-dark); }
+.poetiq-editor-hint { font-size: 0.8rem; color: var(--warmgrey); margin: -8px 0 14px; }
+.poetiq-editor-input {
+  width: 100%; font-family: var(--font-body); font-size: 0.95rem; color: var(--graphite);
+  border: 1px solid rgba(48,45,43,0.2); border-radius: 8px; padding: 12px; min-height: 44px;
+  resize: vertical; background: #fff;
+}
+textarea.poetiq-editor-input { min-height: 120px; }
+.poetiq-editor-radios { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; font-size: 0.9rem; }
+.poetiq-editor-radios label { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.poetiq-editor-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
+.poetiq-editor-actions .btn { padding: 10px 20px; }
+
+.poetiq-toast {
+  position: fixed; bottom: 18px; left: 50%; transform: translate(-50%, 20px);
+  background: var(--moss-dark); color: var(--frost); padding: 12px 22px; border-radius: 999px;
+  font-size: 0.85rem; box-shadow: 0 12px 30px rgba(0,0,0,0.25); z-index: 1100;
+  opacity: 0; transition: opacity 0.25s ease, transform 0.25s ease; pointer-events: none;
+}
+.poetiq-toast.is-shown { opacity: 1; transform: translate(-50%, 0); }
+.poetiq-toast.is-error { background: var(--plum); }
+
+.product-card__media.poetiq-editable, .product-card__body h3.poetiq-editable,
+.product-card__body p.poetiq-editable, .product-card__body span.poetiq-editable {
+  outline-offset: 2px;
+}
+.product-card__media .poetiq-pencil {
+  position: absolute; top: 10px; right: 10px; margin-left: 0; z-index: 2;
+}
+
+.poetiq-login-link {
+  display: inline-block; margin-top: 10px; font-size: 0.7rem; color: rgba(251,250,245,0.4);
+  text-decoration: underline;
+}
+.poetiq-login-link:hover { color: rgba(251,250,245,0.7); }
