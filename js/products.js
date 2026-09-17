@@ -20,6 +20,8 @@ const POETIQ_PRODUCTS = [
     price: 289,
     tone: "almond",
     desc: "A clip-on scent for the everyday commute.",
+    photo: "car-perfume.jpg",
+    photoStyle: "lifestyle",
   },
   {
     id: "aroma-candle",
@@ -55,6 +57,8 @@ const POETIQ_PRODUCTS = [
     price: 590,
     tone: "almond",
     desc: "Scented stones with oil for drawers, closets and small rooms.",
+    photo: "aroma-stone-oil.jpg",
+    photoStyle: "lifestyle",
   },
   {
     id: "refill-100",

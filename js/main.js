@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <article class="product-card">
         ${
           p.photo
-            ? `<div class="product-card__media has-photo">
+            ? `<div class="product-card__media has-photo${p.photoStyle === "lifestyle" ? " is-lifestyle" : ""}">
                 <img src="/assets/products/${p.photo}" alt="${p.name}, ${p.size}">
               </div>`
             : `<div class="product-card__media" style="background:var(--${p.tone})">
