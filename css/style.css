@@ -2,13 +2,15 @@
    POETIQ — design tokens
    ========================================================================== */
 :root {
-  --frost: #fbfaf5;
-  --frost-100: #f3f1e7;
+  /* Restrained 2026 CI palette: Forest / Charcoal / Warm Grey primary,
+     Muted Ivory / subtle Gold secondary — no saturated color. */
+  --frost: #fbf8f2;
+  --frost-100: #f2ede2;
   --moss: #3c4424;
   --moss-dark: #2b3119;
   --graphite: #302d2b;
-  --lime: #e6ef5a;
-  --indigo: #5164a6;
+  --gold: #a98f5c;
+  --warmgrey: #726b5e;
   --almond: #786043;
   --plum: #4f293c;
 
@@ -82,7 +84,7 @@ p { margin: 0 0 1em; }
   color: var(--frost-100);
 }
 .section--moss h1, .section--moss h2, .section--moss h3 { color: var(--frost); }
-.section--moss .eyebrow { color: var(--lime); }
+.section--moss .eyebrow { color: var(--gold); }
 
 .section--frost100 { background: var(--frost-100); }
 
@@ -118,12 +120,12 @@ p { margin: 0 0 1em; }
 }
 .btn--on-dark:hover { background: var(--frost); color: var(--moss-dark); }
 
-.btn--lime {
-  background: var(--lime);
-  border-color: var(--lime);
-  color: var(--graphite);
+.btn--gold {
+  background: transparent;
+  border-color: var(--gold);
+  color: var(--gold);
 }
-.btn--lime:hover { background: #d9e23f; }
+.btn--gold:hover { background: var(--gold); color: var(--graphite); }
 
 .btn--block { width: 100%; justify-content: center; }
 .btn[disabled] { opacity: 0.45; cursor: not-allowed; }
@@ -238,7 +240,7 @@ p { margin: 0 0 1em; }
 }
 
 .hero__content { padding: 64px 0; max-width: 640px; }
-.hero__content .eyebrow { color: var(--lime); }
+.hero__content .eyebrow { color: var(--gold); }
 .hero__content h1 { color: var(--frost); }
 .hero__tagline-th { font-size: 1.15rem; margin-bottom: 1.6em; color: var(--frost-100); }
 .hero__cta { display: flex; gap: 14px; flex-wrap: wrap; }
@@ -522,7 +524,7 @@ select.scent-select {
   display: inline-block;
   margin-top: 10px;
   padding: 3px 10px;
-  background: var(--lime);
+  background: var(--gold);
   color: var(--graphite);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
@@ -546,7 +548,7 @@ select.scent-select {
   text-transform: uppercase;
   border-radius: 999px;
 }
-.section--moss .social-pill:hover { background: var(--lime); color: var(--graphite); border-color: var(--lime); }
+.section--moss .social-pill:hover { background: var(--gold); color: var(--graphite); border-color: var(--gold); }
 
 .stockist-list {
   columns: 2;
@@ -570,7 +572,7 @@ select.scent-select {
   padding: 56px 0 28px;
   font-size: 0.85rem;
 }
-.site-footer a:hover { color: var(--lime); }
+.site-footer a:hover { color: var(--gold); }
 .footer-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
