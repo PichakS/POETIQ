@@ -71,33 +71,25 @@
       "photoStyle": "lifestyle"
     },
     {
-      "id": "refill-100",
+      "id": "reed-diffuser-refill",
       "name": "Reed Diffuser Refill",
-      "size": "100 ml",
-      "price": 590,
+      "sizes": [
+        {
+          "size": "100 ml",
+          "price": 590
+        },
+        {
+          "size": "500 ml",
+          "price": 1090
+        },
+        {
+          "size": "1000 ml",
+          "price": 1090
+        }
+      ],
       "tone": "moss",
-      "desc": "Top up your reed diffuser without buying a new bottle.",
-      "photo": "/assets/products/refill-100.jpg",
-      "photoStyle": "lifestyle"
-    },
-    {
-      "id": "refill-500",
-      "name": "Reed Diffuser Refill",
-      "size": "500 ml",
-      "price": 1090,
-      "tone": "plum",
-      "desc": "Bulk refill for continuous fragrance across a larger space.",
-      "photo": "/assets/products/refill-500.jpg",
-      "photoStyle": "lifestyle"
-    },
-    {
-      "id": "refill-1000",
-      "name": "Reed Diffuser Refill",
-      "size": "1000 ml",
-      "price": 1090,
-      "tone": "warmgrey",
-      "desc": "Bulk refill for continuous fragrance across a larger space.",
-      "photo": "/assets/products/refill-1000.jpg",
+      "desc": "Top up your reed diffuser without buying a new bottle, in the size that fits your space.",
+      "photo": "/assets/products/refill.jpg",
       "photoStyle": "lifestyle"
     }
   ],

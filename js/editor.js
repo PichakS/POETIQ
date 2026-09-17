@@ -48,7 +48,11 @@
   // Git Gateway file read/write
   // ---------------------------------------------------------------------
   function authHeaders() {
-    return currentUser.jwt().then((token) => ({
+    if (!currentUser) {
+      return Promise.reject(new Error("You've been logged out — refresh the page and log in again."));
+    }
+    // Force a refresh check rather than trusting a possibly-expired cached token.
+    return currentUser.jwt(true).then((token) => ({
       Authorization: "Bearer " + token,
       "Content-Type": "application/json",
     }));
@@ -176,6 +180,7 @@
         .catch((err) => {
           saveBtn.disabled = false;
           saveBtn.textContent = "Save";
+          console.error("Poetiq editor save failed:", err);
           toast(err.message || "Something went wrong saving that.", true);
         });
     });
@@ -266,6 +271,7 @@
         .catch((err) => {
           saveBtn.disabled = false;
           saveBtn.textContent = "Save";
+          console.error("Poetiq editor save failed:", err);
           toast(err.message || "Something went wrong saving that.", true);
         });
     });
@@ -442,6 +448,7 @@
         .catch((err) => {
           saveBtn.disabled = false;
           saveBtn.textContent = "Save";
+          console.error("Poetiq editor save failed:", err);
           toast(err.message || "Something went wrong saving that.", true);
         });
     });
@@ -493,7 +500,7 @@
         descEl.classList.add("poetiq-editable");
         descEl.appendChild(makePencil(() => editProductField(index, "desc", descEl), "Edit description"));
       }
-      if (priceEl && !priceEl.querySelector(".poetiq-pencil")) {
+      if (priceEl && !POETIQ_PRODUCTS[index].sizes && !priceEl.querySelector(".poetiq-pencil")) {
         priceEl.classList.add("poetiq-editable");
         priceEl.appendChild(makePencil(() => editProductField(index, "price", priceEl, true), "Edit price"));
       }

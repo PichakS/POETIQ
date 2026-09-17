@@ -257,8 +257,8 @@ p { margin: 0 0 1em; }
    Symbol / motif
    ========================================================================== */
 .symbol {
-  width: 42px;
-  height: 42px;
+  width: 58px;
+  height: 58px;
   opacity: 0.9;
 }
 .symbol--light { filter: none; }
@@ -324,7 +324,7 @@ p { margin: 0 0 1em; }
   color: var(--frost);
   text-align: center;
 }
-.product-card__media .symbol { width: 34px; height: 34px; margin-bottom: 14px; }
+.product-card__media .symbol { width: 46px; height: 46px; margin-bottom: 14px; }
 .product-card__media-label {
   font-family: var(--font-heading);
   font-size: 1.5rem;
@@ -505,7 +505,7 @@ select.scent-select {
   width: 56px; height: 56px;
   display: flex; align-items: center; justify-content: center;
 }
-.cart-line__swatch .symbol { width: 22px; height: 22px; }
+.cart-line__swatch .symbol { width: 30px; height: 30px; }
 .cart-line__name { font-size: 0.92rem; margin: 0 0 4px; }
 .cart-line__meta { font-size: 0.76rem; color: #7a766f; margin: 0 0 8px; }
 .cart-line__remove { font-size: 0.75rem; text-decoration: underline; background: none; border: none; cursor: pointer; color: var(--plum); }

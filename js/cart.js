@@ -21,19 +21,23 @@ function poetiqSaveCart(cart) {
   poetiqRenderCart();
 }
 
-function poetiqAddToCart(productId, scent, qty) {
+function poetiqAddToCart(productId, scent, qty, sizeOverride) {
   const product = POETIQ_PRODUCTS.find((p) => p.id === productId);
   if (!product) return;
+  const size = sizeOverride ? sizeOverride.size : product.size;
+  const price = sizeOverride ? sizeOverride.price : product.price;
   const cart = poetiqGetCart();
-  const existing = cart.find((line) => line.productId === productId && line.scent === scent);
+  const existing = cart.find(
+    (line) => line.productId === productId && line.scent === scent && line.size === size
+  );
   if (existing) {
     existing.qty += qty;
   } else {
     cart.push({
       productId,
       name: product.name,
-      size: product.size,
-      price: product.price,
+      size,
+      price,
       scent,
       qty,
     });
