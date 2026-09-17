@@ -737,6 +737,9 @@ select.scent-select {
   .scent-gallery { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .hero { min-height: 92vh; }
+  /* Owner-only edit toggle (bottom-left) can otherwise crowd the sound
+     toggle (bottom-right) on narrow phones — stack it higher instead. */
+  .poetiq-edit-fab-wrap { bottom: 84px; }
 }
 
 /* ==========================================================================
