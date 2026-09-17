@@ -42,6 +42,14 @@ const POETIQ_PRODUCTS = [
     photo: "reed-diffuser.jpg",
   },
   {
+    id: "wild-reed-diffuser-150",
+    name: "Wild Reed Diffuser",
+    size: "150 ml",
+    price: 890,
+    tone: "almond",
+    desc: "The full-size diffuser for living rooms and entryways.",
+  },
+  {
     id: "aroma-oil",
     name: "Aroma Oil",
     size: "15 ml",
@@ -67,6 +75,8 @@ const POETIQ_PRODUCTS = [
     price: 590,
     tone: "moss",
     desc: "Top up your reed diffuser without buying a new bottle.",
+    photo: "refill-100.jpg",
+    photoStyle: "lifestyle",
   },
   {
     id: "refill-500",
@@ -75,6 +85,8 @@ const POETIQ_PRODUCTS = [
     price: 1090,
     tone: "plum",
     desc: "Bulk refill for continuous fragrance across a larger space.",
+    photo: "refill-500.jpg",
+    photoStyle: "lifestyle",
   },
   {
     id: "refill-1000",
@@ -83,6 +95,8 @@ const POETIQ_PRODUCTS = [
     price: 1090,
     tone: "warmgrey",
     desc: "Bulk refill for continuous fragrance across a larger space.",
+    photo: "refill-1000.jpg",
+    photoStyle: "lifestyle",
   },
 ];
 
