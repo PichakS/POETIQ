@@ -1,4 +1,19 @@
+// Fills every [data-c="path.to.key"] element from content.js. Runs first
+// so all copy is in place before anything else renders.
+function poetiqApplyContent() {
+  if (typeof POETIQ_CONTENT === "undefined") return;
+  document.querySelectorAll("[data-c]").forEach((el) => {
+    const value = el.getAttribute("data-c").split(".").reduce(
+      (obj, key) => (obj && typeof obj === "object" ? obj[key] : undefined),
+      POETIQ_CONTENT
+    );
+    if (typeof value === "string") el.innerHTML = value;
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  poetiqApplyContent();
+
   // Mobile nav toggle
   const navToggle = document.querySelector(".nav-toggle");
   const navLinks = document.querySelector(".site-nav__links");

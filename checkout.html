@@ -18,21 +18,21 @@
     <nav class="site-nav">
       <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
       <ul class="site-nav__links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/shop.html">Shop</a></li>
-        <li><a href="/about.html">Our Story</a></li>
-        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/" data-c="shared.navHome">Home</a></li>
+        <li><a href="/shop.html" data-c="shared.navShop">Shop</a></li>
+        <li><a href="/about.html" data-c="shared.navStory">Our Story</a></li>
+        <li><a href="/contact.html" data-c="shared.navContact">Contact</a></li>
       </ul>
-      <button class="cart-toggle" data-cart-open aria-label="Open bag">Bag <span class="cart-count">0</span></button>
+      <button class="cart-toggle" data-cart-open aria-label="Open bag"><span data-c="shared.navBag">Bag</span> <span class="cart-count">0</span></button>
     </nav>
   </div>
 </header>
 
 <section class="page-header">
   <div class="container">
-    <span class="eyebrow">Checkout</span>
-    <h1>Review &amp; Confirm</h1>
-    <p style="max-width:560px; margin:0 auto;">Submit your order below. We'll message you on LINE
+    <span class="eyebrow" data-c="checkout.headerEyebrow">Checkout</span>
+    <h1 data-c="checkout.headerTitle">Review &amp; Confirm</h1>
+    <p style="max-width:560px; margin:0 auto;" data-c="checkout.headerText">Submit your order below. We'll message you on LINE
       or by phone within one business day to confirm payment and shipping.</p>
   </div>
 </section>
@@ -42,16 +42,16 @@
     <div class="grid grid--2" style="gap:56px; align-items:flex-start;">
 
       <div>
-        <span class="eyebrow">Your Order</span>
+        <span class="eyebrow" data-c="checkout.orderEyebrow">Your Order</span>
         <div data-order-summary style="margin:18px 0 28px;"></div>
 
         <div class="payment-box">
-          <strong>How payment works</strong>
-          <p style="margin:10px 0 16px;">Submit your order, then pay using the QR code or bank
+          <strong data-c="checkout.paymentTitle">How payment works</strong>
+          <p style="margin:10px 0 16px;" data-c="checkout.paymentText">Submit your order, then pay using the QR code or bank
             details below. We'll confirm receipt on LINE and ship once payment is received — the
             same way we confirm orders during a live show.</p>
           <img src="/assets/payment/promptpay-qr.jpg" alt="Poetiq payment QR code and Krungsri bank account details" style="max-width:280px; margin:0 auto 16px; display:block; border-radius:4px;">
-          <p style="margin:0; font-size:0.9rem;">
+          <p style="margin:0; font-size:0.9rem;" data-c="checkout.paymentBankLine">
             <strong>Krungsri Bank</strong> &middot; 626-1-42528-6<br>
             Account name: บจก. โพเอทิค เฮ้าส์ (Poetiq House Co., Ltd.)
           </p>
@@ -59,8 +59,8 @@
       </div>
 
       <div>
-        <span class="eyebrow">Delivery Details</span>
-        <h2 style="margin-bottom:24px;">Your Information</h2>
+        <span class="eyebrow" data-c="checkout.deliveryEyebrow">Delivery Details</span>
+        <h2 style="margin-bottom:24px;" data-c="checkout.deliveryTitle">Your Information</h2>
         <form name="poetiq-order" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/order-received.html" id="checkout-form">
           <input type="hidden" name="form-name" value="poetiq-order">
           <input type="hidden" name="order-details" id="order-details">
@@ -92,8 +92,8 @@
             <label for="notes">Order Notes (optional)</label>
             <textarea id="notes" name="notes" placeholder="Gift wrap, delivery instructions, etc."></textarea>
           </div>
-          <button type="submit" class="btn btn--block">Submit Order</button>
-          <p class="field-note">By submitting, your order details above are included automatically.</p>
+          <button type="submit" class="btn btn--block" data-c="checkout.submitBtn">Submit Order</button>
+          <p class="field-note" data-c="checkout.submitNote">By submitting, your order details above are included automatically.</p>
         </form>
       </div>
 
@@ -104,7 +104,7 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-legal" style="border-top:none; padding-top:0;">
-      &copy; <span data-year>2026</span> Poetiq House Co., Ltd. (บริษัท โพเอทิค เฮ้าส์ จำกัด) &middot; Registered in Thailand, No. 0125569001271
+      <span data-c="shared.footerLegalLine1">&copy; <span data-year>2026</span> Poetiq House Co., Ltd. (บริษัท โพเอทิค เฮ้าส์ จำกัด) &middot; Registered in Thailand, No. 0125569001271</span>
     </div>
   </div>
 </footer>
@@ -112,27 +112,28 @@
 <div class="cart-overlay"></div>
 <aside class="cart-drawer">
   <div class="cart-drawer__header">
-    <h3 style="margin:0;">Your Bag</h3>
+    <h3 style="margin:0;" data-c="shared.cartTitle">Your Bag</h3>
     <button class="cart-drawer__close" data-cart-close aria-label="Close bag">&times;</button>
   </div>
   <div class="cart-drawer__items"></div>
   <div class="cart-drawer__footer">
     <div class="cart-subtotal-row"><span>Subtotal</span><strong data-cart-subtotal>&#3647;0</strong></div>
-    <p class="field-note">Shipping and payment confirmed at checkout.</p>
-    <a href="/checkout.html" class="btn btn--block" data-cart-checkout style="margin-top:10px;">Checkout</a>
+    <p class="field-note" data-c="shared.cartShippingNote">Shipping and payment confirmed at checkout.</p>
+    <a href="/checkout.html" class="btn btn--block" data-cart-checkout style="margin-top:10px;" data-c="shared.cartCheckoutBtn">Checkout</a>
   </div>
 </aside>
 
 <button class="sound-toggle" id="sound-toggle" aria-label="Play Poet's Garden, an original soundscape by Poetiq">
   <span class="sound-toggle__icon"><span></span><span></span><span></span></span>
-  Poet's Garden
+  <span data-c="shared.soundToggleLabel">Poet's Garden</span>
 </button>
 <div class="sound-panel" id="sound-panel">
-  <span class="sound-panel__label">Original Soundscape</span>
-  <h4 class="sound-panel__title">Poet's Garden</h4>
+  <span class="sound-panel__label" data-c="shared.soundPanelEyebrow">Original Soundscape</span>
+  <h4 class="sound-panel__title" data-c="shared.soundPanelTitle">Poet's Garden</h4>
   <div id="sound-embed-slot"></div>
 </div>
 
+<script src="/js/content.js"></script>
 <script src="/js/products.js"></script>
 <script src="/js/cart.js"></script>
 <script src="/js/main.js"></script>

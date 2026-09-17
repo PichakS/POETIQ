@@ -16,10 +16,10 @@
     <a class="site-logo" href="/"><img src="/assets/brand/logo-light.png" alt="Poetiq"></a>
     <nav class="site-nav">
       <ul class="site-nav__links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/shop.html">Shop</a></li>
-        <li><a href="/about.html">Our Story</a></li>
-        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/" data-c="shared.navHome">Home</a></li>
+        <li><a href="/shop.html" data-c="shared.navShop">Shop</a></li>
+        <li><a href="/about.html" data-c="shared.navStory">Our Story</a></li>
+        <li><a href="/contact.html" data-c="shared.navContact">Contact</a></li>
       </ul>
     </nav>
   </div>
@@ -28,14 +28,14 @@
 <section class="section" style="min-height:60vh; display:flex; align-items:center;">
   <div class="container center-copy">
     <img src="/assets/brand/symbol-light.png" alt="" style="width:64px; margin:0 auto 24px;">
-    <span class="eyebrow">Thank You</span>
-    <h1>Your Order Is In</h1>
-    <p style="max-width:520px; margin:0 auto 32px;">We've received your order details. Message us on
+    <span class="eyebrow" data-c="orderReceived.eyebrow">Thank You</span>
+    <h1 data-c="orderReceived.title">Your Order Is In</h1>
+    <p style="max-width:520px; margin:0 auto 32px;" data-c="orderReceived.text">We've received your order details. Message us on
       LINE now with your name so we can send your PromptPay / bank transfer details and confirm
       payment quickly — just like during a live show.</p>
     <div class="hero__cta" style="justify-content:center;">
-      <a href="https://lin.ee/kGxLo5Z" target="_blank" rel="noopener" class="btn">Message Us on LINE</a>
-      <a href="/shop.html" class="btn btn--ghost">Continue Shopping</a>
+      <a href="https://lin.ee/kGxLo5Z" target="_blank" rel="noopener" class="btn" data-c="orderReceived.ctaLine">Message Us on LINE</a>
+      <a href="/shop.html" class="btn btn--ghost" data-c="orderReceived.ctaShop">Continue Shopping</a>
     </div>
   </div>
 </section>
@@ -43,21 +43,22 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-legal" style="border-top:none; padding-top:0;">
-      &copy; <span data-year>2026</span> Poetiq House Co., Ltd. (บริษัท โพเอทิค เฮ้าส์ จำกัด) &middot; Registered in Thailand, No. 0125569001271
+      <span data-c="shared.footerLegalLine1">&copy; <span data-year>2026</span> Poetiq House Co., Ltd. (บริษัท โพเอทิค เฮ้าส์ จำกัด) &middot; Registered in Thailand, No. 0125569001271</span>
     </div>
   </div>
 </footer>
 
 <button class="sound-toggle" id="sound-toggle" aria-label="Play Poet's Garden, an original soundscape by Poetiq">
   <span class="sound-toggle__icon"><span></span><span></span><span></span></span>
-  Poet's Garden
+  <span data-c="shared.soundToggleLabel">Poet's Garden</span>
 </button>
 <div class="sound-panel" id="sound-panel">
-  <span class="sound-panel__label">Original Soundscape</span>
-  <h4 class="sound-panel__title">Poet's Garden</h4>
+  <span class="sound-panel__label" data-c="shared.soundPanelEyebrow">Original Soundscape</span>
+  <h4 class="sound-panel__title" data-c="shared.soundPanelTitle">Poet's Garden</h4>
   <div id="sound-embed-slot"></div>
 </div>
 
+<script src="/js/content.js"></script>
 <script src="/js/products.js"></script>
 <script src="/js/cart.js"></script>
 <script src="/js/main.js"></script>

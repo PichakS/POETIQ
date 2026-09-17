@@ -18,21 +18,21 @@
     <nav class="site-nav">
       <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
       <ul class="site-nav__links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/shop.html">Shop</a></li>
-        <li><a href="/about.html" class="is-active">Our Story</a></li>
-        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/" data-c="shared.navHome">Home</a></li>
+        <li><a href="/shop.html" data-c="shared.navShop">Shop</a></li>
+        <li><a href="/about.html" class="is-active" data-c="shared.navStory">Our Story</a></li>
+        <li><a href="/contact.html" data-c="shared.navContact">Contact</a></li>
       </ul>
-      <button class="cart-toggle" data-cart-open aria-label="Open bag">Bag <span class="cart-count">0</span></button>
+      <button class="cart-toggle" data-cart-open aria-label="Open bag"><span data-c="shared.navBag">Bag</span> <span class="cart-count">0</span></button>
     </nav>
   </div>
 </header>
 
 <section class="page-header">
   <div class="container">
-    <span class="eyebrow">Our Story</span>
-    <h1>Rooted in Lanna Heritage</h1>
-    <p style="max-width:600px; margin:0 auto;">A home fragrance brand inspired by Thai and Lanna
+    <span class="eyebrow" data-c="about.headerEyebrow">Our Story</span>
+    <h1 data-c="about.headerTitle">Rooted in Lanna Heritage</h1>
+    <p style="max-width:600px; margin:0 auto;" data-c="about.headerText">A home fragrance brand inspired by Thai and Lanna
       cultural heritage, blended with the serenity of nature in Northern Thailand.</p>
   </div>
 </section>
@@ -41,13 +41,13 @@
   <div class="container">
     <div class="grid grid--2" style="align-items:center; gap:56px;">
       <div>
-        <span class="eyebrow">Mission &amp; Vision</span>
-        <h2>Sharing the Beauty of<br>Thai Lanna Heritage</h2>
-        <p>Poetiq is inspired by the delicate artistry of Lanna pattern and the serene nature of
+        <span class="eyebrow" data-c="about.missionEyebrow">Mission &amp; Vision</span>
+        <h2 data-c="about.missionTitle">Sharing the Beauty of<br>Thai Lanna Heritage</h2>
+        <p data-c="about.missionText1">Poetiq is inspired by the delicate artistry of Lanna pattern and the serene nature of
           Northern Thailand. Through refined home fragrance creations, the brand shares the beauty of
           Thai Lanna heritage with people around the world, while reflecting Thailand's cultural
           wisdom and roots.</p>
-        <p>Each fragrance is crafted around the highland forests of Chiang Mai, the oolong tea
+        <p data-c="about.missionText2">Each fragrance is crafted around the highland forests of Chiang Mai, the oolong tea
           plantations of Chiang Rai, and the lantern festival of Sukhothai — inviting people to
           experience the roots of Lanna culture, the richness of nature, and the Thai way of life.</p>
       </div>
@@ -64,12 +64,12 @@
   <div class="container">
     <div class="grid grid--2" style="align-items:center; gap:56px;">
       <div style="text-align:center;">
-        <img src="/assets/brand/symbol-light.png" alt="Poetiq symbol" style="width:180px; margin:0 auto;">
+        <img src="/assets/brand/symbol-light.png" alt="Poetiq symbol" class="symbol-large">
       </div>
       <div>
-        <span class="eyebrow">The Symbol</span>
-        <h2>Phor Phan &amp; Ror Ruea,<br>Woven Together</h2>
-        <p>The Poetiq mark is drawn from two Lanna characters — <strong>"Phor Phan" (ผ)</strong> and
+        <span class="eyebrow" data-c="about.symbolEyebrow">The Symbol</span>
+        <h2 data-c="about.symbolTitle">Phor Phan &amp; Ror Ruea,<br>Woven Together</h2>
+        <p data-c="about.symbolText">The Poetiq mark is drawn from two Lanna characters — <strong>"Phor Phan" (พ)</strong> and
           <strong>"Ror Ruea" (ร)</strong> — adapted and interlaced with traditional Lanna woven textile
           patterns into a single, connected form. The trademark has been registered with Thailand's
           Department of Intellectual Property.</p>
@@ -80,9 +80,9 @@
 
 <section class="section">
   <div class="container center-copy">
-    <span class="eyebrow">Community &amp; Sustainability</span>
-    <h2>Made With, Not Just For</h2>
-    <p>Poetiq collaborates with local communities to develop artisan skills in provincial areas,
+    <span class="eyebrow" data-c="about.communityEyebrow">Community &amp; Sustainability</span>
+    <h2 data-c="about.communityTitle">Made With, Not Just For</h2>
+    <p data-c="about.communityText">Poetiq collaborates with local communities to develop artisan skills in provincial areas,
       creating additional income alongside the production process. Materials and packaging are
       chosen to be safe for health and the environment — avoiding plastic and minimising waste
       through less-waste production.</p>
@@ -92,9 +92,9 @@
 <section class="section section--moss">
   <div class="container">
     <div class="center-copy" style="margin-bottom:48px;">
-      <span class="eyebrow">Scent Stories</span>
-      <h2>The Forest Bathing Collection</h2>
-      <p style="color:rgba(251,250,245,0.75);">Every scent in the collection is built around a place —
+      <span class="eyebrow" data-c="about.galleryEyebrow">Scent Stories</span>
+      <h2 data-c="about.galleryTitle">The Forest Bathing Collection</h2>
+      <p style="color:rgba(251,250,245,0.75);" data-c="about.galleryText">Every scent in the collection is built around a place —
         a memory of Northern Thailand you can bring home.</p>
     </div>
     <div class="scent-gallery">
@@ -112,15 +112,15 @@
       <img src="/assets/scents/first-rain-tea.jpg" alt="First Rain Tea — ชาหลังวันฝนแรก" loading="lazy">
     </div>
     <div style="text-align:center; margin-top:48px;">
-      <a href="/shop.html" class="btn btn--gold">Shop the Collection</a>
+      <a href="/shop.html" class="btn btn--gold" data-c="about.galleryCta">Shop the Collection</a>
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="container center-copy" style="margin-bottom:12px;">
-    <span class="eyebrow">Find Us In Person</span>
-    <h2>Retail Stockists in Thailand</h2>
+    <span class="eyebrow" data-c="about.stockistsEyebrow">Find Us In Person</span>
+    <h2 data-c="about.stockistsTitle">Retail Stockists in Thailand</h2>
   </div>
   <div class="container" style="max-width:640px;">
     <ul class="stockist-list">
@@ -140,18 +140,18 @@
     <div class="footer-grid">
       <div>
         <img src="/assets/brand/logo-dark.png" alt="Poetiq" style="height:22px; margin-bottom:16px;">
-        <p style="max-width:260px;">A home fragrance house rooted in Thai Lanna heritage, made in Chiang Mai.</p>
+        <p style="max-width:260px;" data-c="shared.footerTagline">A home fragrance house rooted in Thai Lanna heritage, made in Chiang Mai.</p>
       </div>
       <div>
-        <h4>Shop</h4>
+        <h4 data-c="shared.footerShopHeading">Shop</h4>
         <ul>
-          <li><a href="/shop.html">All Products</a></li>
-          <li><a href="/about.html">Scent Stories</a></li>
-          <li><a href="/contact.html">Stockists</a></li>
+          <li><a href="/shop.html" data-c="shared.footerShopLink1">All Products</a></li>
+          <li><a href="/about.html" data-c="shared.footerShopLink2">Scent Stories</a></li>
+          <li><a href="/contact.html" data-c="shared.footerShopLink3">Stockists</a></li>
         </ul>
       </div>
       <div>
-        <h4>Connect</h4>
+        <h4 data-c="shared.footerConnectHeading">Connect</h4>
         <ul>
           <li><a href="https://www.facebook.com/p/Poetiq-61572169323522/" target="_blank" rel="noopener">Facebook</a></li>
           <li><a href="https://instagram.com/poetiq.th" target="_blank" rel="noopener">Instagram</a></li>
@@ -160,17 +160,17 @@
         </ul>
       </div>
       <div>
-        <h4>Company</h4>
+        <h4 data-c="shared.footerCompanyHeading">Company</h4>
         <ul>
-          <li><a href="/contact.html">Contact Us</a></li>
-          <li><a href="/checkout.html">Checkout</a></li>
+          <li><a href="/contact.html" data-c="shared.footerCompanyLink1">Contact Us</a></li>
+          <li><a href="/checkout.html" data-c="shared.footerCompanyLink2">Checkout</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-legal">
-      &copy; <span data-year>2026</span> Poetiq House Co., Ltd. (บริษัท โพเอทิค เฮ้าส์ จำกัด) &middot; Registered in Thailand, No. 0125569001271<br>
-      29/353 Muang Thong Thani, Soi 10, Moo 9, Bang Phut, Pak Kret, Nonthaburi 11120<br>
-      Est. by Dr. Chanokporn Klinsopon, PhD.
+      <span data-c="shared.footerLegalLine1">&copy; <span data-year>2026</span> Poetiq House Co., Ltd. (บริษัท โพเอทิค เฮ้าส์ จำกัด) &middot; Registered in Thailand, No. 0125569001271</span><br>
+      <span data-c="shared.footerLegalLine2">29/353 Muang Thong Thani, Soi 10, Moo 9, Bang Phut, Pak Kret, Nonthaburi 11120</span><br>
+      <span data-c="shared.footerFounderLine">Est. by Dr. Chanokporn Klinsopon, PhD.</span>
     </div>
   </div>
 </footer>
@@ -178,27 +178,28 @@
 <div class="cart-overlay"></div>
 <aside class="cart-drawer">
   <div class="cart-drawer__header">
-    <h3 style="margin:0;">Your Bag</h3>
+    <h3 style="margin:0;" data-c="shared.cartTitle">Your Bag</h3>
     <button class="cart-drawer__close" data-cart-close aria-label="Close bag">&times;</button>
   </div>
   <div class="cart-drawer__items"></div>
   <div class="cart-drawer__footer">
     <div class="cart-subtotal-row"><span>Subtotal</span><strong data-cart-subtotal>&#3647;0</strong></div>
-    <p class="field-note">Shipping and payment confirmed at checkout.</p>
-    <a href="/checkout.html" class="btn btn--block" data-cart-checkout style="margin-top:10px;">Checkout</a>
+    <p class="field-note" data-c="shared.cartShippingNote">Shipping and payment confirmed at checkout.</p>
+    <a href="/checkout.html" class="btn btn--block" data-cart-checkout style="margin-top:10px;" data-c="shared.cartCheckoutBtn">Checkout</a>
   </div>
 </aside>
 
 <button class="sound-toggle" id="sound-toggle" aria-label="Play Poet's Garden, an original soundscape by Poetiq">
   <span class="sound-toggle__icon"><span></span><span></span><span></span></span>
-  Poet's Garden
+  <span data-c="shared.soundToggleLabel">Poet's Garden</span>
 </button>
 <div class="sound-panel" id="sound-panel">
-  <span class="sound-panel__label">Original Soundscape</span>
-  <h4 class="sound-panel__title">Poet's Garden</h4>
+  <span class="sound-panel__label" data-c="shared.soundPanelEyebrow">Original Soundscape</span>
+  <h4 class="sound-panel__title" data-c="shared.soundPanelTitle">Poet's Garden</h4>
   <div id="sound-embed-slot"></div>
 </div>
 
+<script src="/js/content.js"></script>
 <script src="/js/products.js"></script>
 <script src="/js/cart.js"></script>
 <script src="/js/main.js"></script>
