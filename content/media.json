@@ -1,0 +1,20 @@
+{
+  "home-teaser-1": { "src": "/assets/scents/mist-by-the-lake.jpg", "position": "center center" },
+  "home-teaser-2": { "src": "/assets/scents/lanna-lantern.jpg", "position": "center center" },
+  "home-teaser-3": { "src": "/assets/scents/wild-white-tea.jpg", "position": "center center" },
+  "about-teaser-1": { "src": "/assets/scents/way-to-the-hill.jpg", "position": "center center" },
+  "about-teaser-2": { "src": "/assets/scents/poets-garden.jpg", "position": "center center" },
+  "about-teaser-3": { "src": "/assets/scents/holiday-brunch.jpg", "position": "center center" },
+  "about-gallery-1": { "src": "/assets/scents/rice-season.jpg", "position": "center center" },
+  "about-gallery-2": { "src": "/assets/scents/poets-garden.jpg", "position": "center center" },
+  "about-gallery-3": { "src": "/assets/scents/hidden-kingdom.jpg", "position": "center center" },
+  "about-gallery-4": { "src": "/assets/scents/morning-ritual.jpg", "position": "center center" },
+  "about-gallery-5": { "src": "/assets/scents/way-to-the-hill.jpg", "position": "center center" },
+  "about-gallery-6": { "src": "/assets/scents/lanna-lantern.jpg", "position": "center center" },
+  "about-gallery-7": { "src": "/assets/scents/mist-by-the-lake.jpg", "position": "center center" },
+  "about-gallery-8": { "src": "/assets/scents/holiday-brunch.jpg", "position": "center center" },
+  "about-gallery-9": { "src": "/assets/scents/willow-in-the-valley.jpg", "position": "center center" },
+  "about-gallery-10": { "src": "/assets/scents/weavers-house.jpg", "position": "center center" },
+  "about-gallery-11": { "src": "/assets/scents/wild-white-tea.jpg", "position": "center center" },
+  "about-gallery-12": { "src": "/assets/scents/first-rain-tea.jpg", "position": "center center" }
+}

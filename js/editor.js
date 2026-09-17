@@ -81,6 +81,15 @@
     );
   }
 
+  function readFileAsDataUrl(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
   function putImage(path, dataUrl) {
     const base64 = dataUrl.split(",")[1];
     return authHeaders().then((headers) =>
@@ -172,6 +181,96 @@
     });
   }
 
+  // Shared photo editor: crop position (9-point anchor grid) + optional zoom
+  // + replace-photo, all previewed live before saving.
+  function openMediaEditor({ title, currentSrc, currentPosition, currentZoom, showZoom, aspectRatio, onSave }) {
+    const overlay = document.createElement("div");
+    overlay.className = "poetiq-editor-overlay";
+    const anchors = ["left top", "center top", "right top", "left center", "center center", "right center", "left bottom", "center bottom", "right bottom"];
+    const startPosition = currentPosition || "center center";
+    const startZoom = currentZoom || 1;
+    overlay.innerHTML = `
+      <div class="poetiq-editor-modal poetiq-media-modal">
+        <h4>${title}</h4>
+        <div class="poetiq-media-preview-wrap" style="aspect-ratio:${aspectRatio || "4/5"}">
+          <img class="poetiq-media-preview" src="${currentSrc}">
+        </div>
+        <div class="poetiq-media-anchors">
+          ${anchors.map((a) => `<button type="button" class="poetiq-media-anchor" data-pos="${a}" aria-label="Focus ${a}"></button>`).join("")}
+        </div>
+        ${showZoom ? `<div class="poetiq-media-zoom-row">Zoom<input type="range" class="poetiq-media-zoom" min="100" max="180" value="${Math.round(startZoom * 100)}"></div>` : ""}
+        <div class="poetiq-media-upload-row">
+          <button type="button" class="btn btn--ghost poetiq-media-upload">Change Photo</button>
+          <input type="file" accept="image/*" class="poetiq-media-file" style="display:none">
+        </div>
+        <div class="poetiq-editor-actions">
+          <button type="button" class="btn btn--ghost poetiq-editor-cancel">Cancel</button>
+          <button type="button" class="btn poetiq-editor-save">Save</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    const preview = overlay.querySelector(".poetiq-media-preview");
+    let chosenPosition = startPosition;
+    let chosenZoom = startZoom;
+    let chosenFile = null;
+
+    preview.style.objectPosition = chosenPosition;
+    if (showZoom) preview.style.transform = "scale(" + chosenZoom + ")";
+
+    overlay.querySelectorAll(".poetiq-media-anchor").forEach((btn) => {
+      if (btn.getAttribute("data-pos") === chosenPosition) btn.classList.add("is-selected");
+      btn.addEventListener("click", () => {
+        overlay.querySelectorAll(".poetiq-media-anchor").forEach((b) => b.classList.remove("is-selected"));
+        btn.classList.add("is-selected");
+        chosenPosition = btn.getAttribute("data-pos");
+        preview.style.objectPosition = chosenPosition;
+      });
+    });
+
+    const zoomInput = overlay.querySelector(".poetiq-media-zoom");
+    if (zoomInput) {
+      zoomInput.addEventListener("input", () => {
+        chosenZoom = Number(zoomInput.value) / 100;
+        preview.style.transform = "scale(" + chosenZoom + ")";
+      });
+    }
+
+    const fileInput = overlay.querySelector(".poetiq-media-file");
+    overlay.querySelector(".poetiq-media-upload").addEventListener("click", () => fileInput.click());
+    fileInput.addEventListener("change", () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+      chosenFile = file;
+      readFileAsDataUrl(file).then((dataUrl) => {
+        preview.src = dataUrl;
+      });
+    });
+
+    overlay.querySelector(".poetiq-editor-cancel").addEventListener("click", () => overlay.remove());
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) overlay.remove();
+    });
+
+    overlay.querySelector(".poetiq-editor-save").addEventListener("click", () => {
+      const saveBtn = overlay.querySelector(".poetiq-editor-save");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Saving…";
+      Promise.resolve(onSave({ file: chosenFile, position: chosenPosition, zoom: chosenZoom }))
+        .then(() => {
+          overlay.remove();
+          toast("Saved — live on the site within about a minute.");
+          if (editMode) attachAllPencils();
+        })
+        .catch((err) => {
+          saveBtn.disabled = false;
+          saveBtn.textContent = "Save";
+          toast(err.message || "Something went wrong saving that.", true);
+        });
+    });
+  }
+
   // ---------------------------------------------------------------------
   // Editing content/site.json (page copy)
   // ---------------------------------------------------------------------
@@ -217,34 +316,81 @@
   }
 
   function editProductPhoto(index, imgEl) {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = "image/*";
-    input.addEventListener("change", () => {
-      const file = input.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = () => {
-        const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
-        const path = "assets/uploads/" + Date.now() + "-" + POETIQ_PRODUCTS[index].id + "." + ext;
-        toast("Uploading photo…");
-        putImage(path, reader.result)
-          .then(() => getFile("content/products.json"))
-          .then(({ content, sha }) => {
+    const product = POETIQ_PRODUCTS[index];
+    const rect = imgEl.getBoundingClientRect();
+    openMediaEditor({
+      title: "Edit photo",
+      currentSrc: product.photo,
+      currentPosition: product.photoPosition || "center center",
+      currentZoom: product.photoZoom || 1,
+      showZoom: true,
+      aspectRatio: rect.width && rect.height ? rect.width + "/" + rect.height : "4/5",
+      onSave: ({ file, position, zoom }) => {
+        const uploaded = file
+          ? readFileAsDataUrl(file).then((dataUrl) => {
+              const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
+              const path = "assets/uploads/" + Date.now() + "-" + product.id + "." + ext;
+              return putImage(path, dataUrl).then(() => "/" + path);
+            })
+          : Promise.resolve(null);
+
+        return uploaded.then((newPath) =>
+          getFile("content/products.json").then(({ content, sha }) => {
             const data = JSON.parse(base64ToUtf8(content));
-            data.products[index].photo = "/" + path;
-            return putFile("content/products.json", JSON.stringify(data, null, 2) + "\n", sha, "Update photo for " + data.products[index].id);
+            const p = data.products[index];
+            if (newPath) p.photo = newPath;
+            p.photoPosition = position;
+            p.photoZoom = zoom;
+            return putFile("content/products.json", JSON.stringify(data, null, 2) + "\n", sha, "Update photo for " + p.id).then(() => {
+              if (newPath) {
+                product.photo = newPath;
+                imgEl.src = newPath;
+              }
+              product.photoPosition = position;
+              product.photoZoom = zoom;
+              imgEl.style.objectPosition = position;
+              imgEl.style.transform = zoom !== 1 ? "scale(" + zoom + ")" : "";
+            });
           })
-          .then(() => {
-            POETIQ_PRODUCTS[index].photo = "/" + path;
-            imgEl.src = "/" + path;
-            toast("Photo saved — live on the site within about a minute.");
-          })
-          .catch((err) => toast(err.message || "Couldn't upload that photo.", true));
-      };
-      reader.readAsDataURL(file);
+        );
+      },
     });
-    input.click();
+  }
+
+  // ---------------------------------------------------------------------
+  // Editing content/media.json (homepage teaser + about-page photography)
+  // ---------------------------------------------------------------------
+  function editMediaImage(key, imgEl) {
+    const entry = (window.POETIQ_MEDIA && window.POETIQ_MEDIA[key]) || {};
+    const rect = imgEl.getBoundingClientRect();
+    openMediaEditor({
+      title: "Edit photo",
+      currentSrc: imgEl.currentSrc || imgEl.src,
+      currentPosition: entry.position || "center center",
+      showZoom: false,
+      aspectRatio: rect.width && rect.height ? rect.width + "/" + rect.height : "4/5",
+      onSave: ({ file, position }) => {
+        const uploaded = file
+          ? readFileAsDataUrl(file).then((dataUrl) => {
+              const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
+              const path = "assets/uploads/" + Date.now() + "-" + key + "." + ext;
+              return putImage(path, dataUrl).then(() => "/" + path);
+            })
+          : Promise.resolve(null);
+
+        return uploaded.then((newPath) =>
+          getFile("content/media.json").then(({ content, sha }) => {
+            const data = JSON.parse(base64ToUtf8(content));
+            data[key] = { src: newPath || (data[key] && data[key].src) || imgEl.src, position };
+            return putFile("content/media.json", JSON.stringify(data, null, 2) + "\n", sha, "Update photo " + key).then(() => {
+              window.POETIQ_MEDIA[key] = data[key];
+              if (newPath) imgEl.src = newPath;
+              imgEl.style.objectPosition = position;
+            });
+          })
+        );
+      },
+    });
   }
 
   // ---------------------------------------------------------------------
@@ -361,6 +507,15 @@
     });
   }
 
+  function attachMediaPencils() {
+    document.querySelectorAll("[data-media]").forEach((img) => {
+      const frame = img.closest(".media-frame") || img.parentElement;
+      if (!frame || frame.querySelector(".poetiq-pencil")) return;
+      frame.style.position = frame.style.position || "relative";
+      frame.appendChild(makePencil(() => editMediaImage(img.getAttribute("data-media"), img), "Edit photo"));
+    });
+  }
+
   function removeAllPencils() {
     document.querySelectorAll(".poetiq-pencil").forEach((p) => p.remove());
     document.querySelectorAll(".poetiq-editable").forEach((el) => el.classList.remove("poetiq-editable"));
@@ -369,6 +524,7 @@
   function attachAllPencils() {
     attachTextPencils();
     attachProductPencils();
+    attachMediaPencils();
   }
 
   // ---------------------------------------------------------------------

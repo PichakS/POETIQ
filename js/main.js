@@ -11,8 +11,22 @@ function poetiqApplyContent() {
   });
 }
 
+// Applies any [data-media] photo whose key exists in POETIQ_MEDIA (see
+// js/media.js / content/media.json). Elements keep their original src as a
+// fallback if a key is missing or the fetch failed.
+function poetiqApplyMedia() {
+  if (typeof POETIQ_MEDIA === "undefined") return;
+  document.querySelectorAll("[data-media]").forEach((img) => {
+    const entry = POETIQ_MEDIA[img.getAttribute("data-media")];
+    if (!entry) return;
+    if (entry.src) img.src = entry.src;
+    if (entry.position) img.style.objectPosition = entry.position;
+  });
+}
+
 function poetiqInit() {
   poetiqApplyContent();
+  poetiqApplyMedia();
 
   // Mobile nav toggle
   const navToggle = document.querySelector(".nav-toggle");
@@ -72,7 +86,7 @@ function poetiqInit() {
         ${
           p.photo
             ? `<div class="product-card__media has-photo${p.photoStyle === "lifestyle" ? " is-lifestyle" : ""}">
-                <img src="${p.photo}" alt="${p.name}, ${p.size}">
+                <img src="${p.photo}" alt="${p.name}, ${p.size}" style="object-position:${p.photoPosition || "center center"};${p.photoZoom && p.photoZoom !== 1 ? " transform:scale(" + p.photoZoom + ");" : ""}">
               </div>`
             : `<div class="product-card__media" style="background:var(--${p.tone})">
                 <div>
@@ -132,10 +146,11 @@ function poetiqInit() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  Promise.all([poetiqLoadContent(), poetiqLoadProducts()]).then(([content, products]) => {
+  Promise.all([poetiqLoadContent(), poetiqLoadProducts(), poetiqLoadMedia()]).then(([content, products, media]) => {
     window.POETIQ_CONTENT = content;
     window.POETIQ_PRODUCTS = products.products || [];
     window.POETIQ_SCENTS = products.scents || [];
+    window.POETIQ_MEDIA = media || {};
     poetiqInit();
     document.dispatchEvent(new CustomEvent("poetiq:ready"));
   });
