@@ -1,0 +1,175 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+site_url: https://poetiq-house.netlify.app
+display_url: https://poetiq-house.netlify.app
+
+locale: "en"
+
+collections:
+  - name: "site_content"
+    label: "Page Text"
+    files:
+      - name: "site"
+        label: "All Page Wording"
+        file: "content/site.json"
+        fields:
+          - { label: "Shared (header, footer, cart, sound player)", name: "shared", widget: "object", fields: [
+              { label: "Nav — Home", name: "navHome", widget: "string" },
+              { label: "Nav — Shop", name: "navShop", widget: "string" },
+              { label: "Nav — Our Story", name: "navStory", widget: "string" },
+              { label: "Nav — Contact", name: "navContact", widget: "string" },
+              { label: "Nav — Bag", name: "navBag", widget: "string" },
+              { label: "Footer tagline", name: "footerTagline", widget: "text" },
+              { label: "Footer — Shop column heading", name: "footerShopHeading", widget: "string" },
+              { label: "Footer — Shop link 1", name: "footerShopLink1", widget: "string" },
+              { label: "Footer — Shop link 2", name: "footerShopLink2", widget: "string" },
+              { label: "Footer — Shop link 3", name: "footerShopLink3", widget: "string" },
+              { label: "Footer — Connect column heading", name: "footerConnectHeading", widget: "string" },
+              { label: "Footer — Company column heading", name: "footerCompanyHeading", widget: "string" },
+              { label: "Footer — Company link 1", name: "footerCompanyLink1", widget: "string" },
+              { label: "Footer — Company link 2", name: "footerCompanyLink2", widget: "string" },
+              { label: "Footer legal line 1 (contains HTML — careful)", name: "footerLegalLine1", widget: "text" },
+              { label: "Footer legal line 2 (address)", name: "footerLegalLine2", widget: "string" },
+              { label: "Footer founder line", name: "footerFounderLine", widget: "string" },
+              { label: "Cart — title", name: "cartTitle", widget: "string" },
+              { label: "Cart — shipping note", name: "cartShippingNote", widget: "string" },
+              { label: "Cart — checkout button", name: "cartCheckoutBtn", widget: "string" },
+              { label: "Sound player — toggle label", name: "soundToggleLabel", widget: "string" },
+              { label: "Sound player — panel eyebrow", name: "soundPanelEyebrow", widget: "string" },
+              { label: "Sound player — panel title", name: "soundPanelTitle", widget: "string" },
+            ] }
+          - { label: "Home Page", name: "home", widget: "object", fields: [
+              { label: "Hero — eyebrow (small label above title)", name: "heroEyebrow", widget: "string" },
+              { label: "Hero — title (use <br> for a line break)", name: "heroTitle", widget: "string" },
+              { label: "Hero — Thai tagline", name: "heroTaglineTh", widget: "string" },
+              { label: "Hero — \"Shop\" button text", name: "heroCtaShop", widget: "string" },
+              { label: "Hero — \"Our Story\" button text", name: "heroCtaStory", widget: "string" },
+              { label: "Intro — eyebrow", name: "introEyebrow", widget: "string" },
+              { label: "Intro — paragraph", name: "introText", widget: "text" },
+              { label: "Featured products — eyebrow", name: "featuredEyebrow", widget: "string" },
+              { label: "Featured products — title", name: "featuredTitle", widget: "string" },
+              { label: "Featured products — button text", name: "featuredCta", widget: "string" },
+              { label: "Scent stories teaser — eyebrow", name: "storiesEyebrow", widget: "string" },
+              { label: "Scent stories teaser — title (use <br> for a line break)", name: "storiesTitle", widget: "string" },
+              { label: "Scent stories teaser — paragraph", name: "storiesText", widget: "text" },
+              { label: "Scent stories teaser — button text", name: "storiesCta", widget: "string" },
+              { label: "Follow section — eyebrow", name: "followEyebrow", widget: "string" },
+              { label: "Follow section — title", name: "followTitle", widget: "string" },
+              { label: "Follow section — paragraph", name: "followText", widget: "text" },
+            ] }
+          - { label: "Shop Page", name: "shop", widget: "object", fields: [
+              { label: "Header — eyebrow", name: "headerEyebrow", widget: "string" },
+              { label: "Header — title", name: "headerTitle", widget: "string" },
+              { label: "Header — paragraph", name: "headerText", widget: "text" },
+              { label: "Help box — eyebrow", name: "helpEyebrow", widget: "string" },
+              { label: "Help box — title", name: "helpTitle", widget: "string" },
+              { label: "Help box — paragraph", name: "helpText", widget: "text" },
+              { label: "Help box — button text", name: "helpCta", widget: "string" },
+            ] }
+          - { label: "Our Story Page", name: "about", widget: "object", fields: [
+              { label: "Header — eyebrow", name: "headerEyebrow", widget: "string" },
+              { label: "Header — title", name: "headerTitle", widget: "string" },
+              { label: "Header — paragraph", name: "headerText", widget: "text" },
+              { label: "Mission — eyebrow", name: "missionEyebrow", widget: "string" },
+              { label: "Mission — title (use <br> for a line break)", name: "missionTitle", widget: "string" },
+              { label: "Mission — paragraph 1", name: "missionText1", widget: "text" },
+              { label: "Mission — paragraph 2", name: "missionText2", widget: "text" },
+              { label: "Symbol — eyebrow", name: "symbolEyebrow", widget: "string" },
+              { label: "Symbol — title (use <br> for a line break)", name: "symbolTitle", widget: "string" },
+              { label: "Symbol — paragraph (contains HTML — careful)", name: "symbolText", widget: "text" },
+              { label: "Community — eyebrow", name: "communityEyebrow", widget: "string" },
+              { label: "Community — title", name: "communityTitle", widget: "string" },
+              { label: "Community — paragraph", name: "communityText", widget: "text" },
+              { label: "Scent gallery — eyebrow", name: "galleryEyebrow", widget: "string" },
+              { label: "Scent gallery — title", name: "galleryTitle", widget: "string" },
+              { label: "Scent gallery — paragraph", name: "galleryText", widget: "text" },
+              { label: "Scent gallery — button text", name: "galleryCta", widget: "string" },
+              { label: "Stockists — eyebrow", name: "stockistsEyebrow", widget: "string" },
+              { label: "Stockists — title", name: "stockistsTitle", widget: "string" },
+            ] }
+          - { label: "Contact Page", name: "contact", widget: "object", fields: [
+              { label: "Header — eyebrow", name: "headerEyebrow", widget: "string" },
+              { label: "Header — title", name: "headerTitle", widget: "string" },
+              { label: "Header — paragraph", name: "headerText", widget: "text" },
+              { label: "Reach us — eyebrow", name: "reachEyebrow", widget: "string" },
+              { label: "Reach us — title", name: "reachTitle", widget: "string" },
+              { label: "Company name (English)", name: "companyName", widget: "string" },
+              { label: "Company name (Thai)", name: "companyNameTh", widget: "string" },
+              { label: "Company address (contains <br> line breaks — careful)", name: "companyAddress", widget: "text" },
+              { label: "Form — eyebrow", name: "formEyebrow", widget: "string" },
+              { label: "Form — title", name: "formTitle", widget: "string" },
+              { label: "Form — submit button text", name: "formSubmitBtn", widget: "string" },
+            ] }
+          - { label: "Checkout Page", name: "checkout", widget: "object", fields: [
+              { label: "Header — eyebrow", name: "headerEyebrow", widget: "string" },
+              { label: "Header — title", name: "headerTitle", widget: "string" },
+              { label: "Header — paragraph", name: "headerText", widget: "text" },
+              { label: "Order box — eyebrow", name: "orderEyebrow", widget: "string" },
+              { label: "Payment box — title", name: "paymentTitle", widget: "string" },
+              { label: "Payment box — paragraph", name: "paymentText", widget: "text" },
+              { label: "Payment box — bank details line (contains HTML — careful)", name: "paymentBankLine", widget: "text" },
+              { label: "Delivery form — eyebrow", name: "deliveryEyebrow", widget: "string" },
+              { label: "Delivery form — title", name: "deliveryTitle", widget: "string" },
+              { label: "Submit button text", name: "submitBtn", widget: "string" },
+              { label: "Submit note (small text under the button)", name: "submitNote", widget: "string" },
+            ] }
+          - { label: "Order Received Page", name: "orderReceived", widget: "object", fields: [
+              { label: "Eyebrow", name: "eyebrow", widget: "string" },
+              { label: "Title", name: "title", widget: "string" },
+              { label: "Paragraph", name: "text", widget: "text" },
+              { label: "\"Message on LINE\" button text", name: "ctaLine", widget: "string" },
+              { label: "\"Continue Shopping\" button text", name: "ctaShop", widget: "string" },
+            ] }
+
+  - name: "products"
+    label: "Products & Scents"
+    files:
+      - name: "catalog"
+        label: "Shop Catalog"
+        file: "content/products.json"
+        fields:
+          - label: "Products"
+            name: "products"
+            widget: "list"
+            summary: "{{name}} — {{size}} — ฿{{price}}"
+            fields:
+              - { label: "Internal ID (do not change — the shopping cart uses this)", name: "id", widget: "string" }
+              - { label: "Product name", name: "name", widget: "string" }
+              - { label: "Size", name: "size", widget: "string" }
+              - { label: "Price (baht, number only)", name: "price", widget: "number", value_type: "int" }
+              - label: "Card color (only used if there's no photo)"
+                name: "tone"
+                widget: "select"
+                options: ["moss", "almond", "plum", "warmgrey"]
+              - { label: "Short description", name: "desc", widget: "text" }
+              - { label: "Photo", name: "photo", widget: "image", required: false, choose_url: false }
+              - label: "Photo style"
+                name: "photoStyle"
+                widget: "select"
+                hint: "Cutout = plain product shot, fills the frame with white space if needed. Lifestyle = styled photo, fills the whole card edge-to-edge."
+                options: ["cutout", "lifestyle"]
+          - label: "Scent Names"
+            name: "scents"
+            widget: "list"
+            field: { label: "Scent name", name: "scent", widget: "string" }
+
+  - name: "design"
+    label: "Site Design"
+    files:
+      - name: "design"
+        label: "Fonts"
+        file: "content/design.json"
+        fields:
+          - label: "Font pairing"
+            name: "fontPairing"
+            widget: "select"
+            hint: "Changes the typefaces used across the whole site."
+            options:
+              - { label: "Classic — Cormorant + Maitree (current)", value: "classic" }
+              - { label: "Warm — Fraunces + Noto Serif Thai", value: "warm" }
+              - { label: "Modern — Playfair Display + Noto Sans Thai", value: "modern" }

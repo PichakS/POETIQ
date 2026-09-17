@@ -183,4 +183,6 @@ function poetiqRenderOrderSummary(cart) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", poetiqRenderCart);
+// Rendered once data has loaded — see main.js's poetiqInit(), which calls
+// poetiqRenderCart() itself. No separate DOMContentLoaded listener here:
+// POETIQ_PRODUCTS isn't populated yet at that point.

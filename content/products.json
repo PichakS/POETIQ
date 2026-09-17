@@ -1,0 +1,119 @@
+{
+  "products": [
+    {
+      "id": "room-spray",
+      "name": "Room Spray",
+      "size": "30 ml",
+      "price": 490,
+      "tone": "warmgrey",
+      "desc": "An instant mist for the room, inspired by highland air.",
+      "photo": "/assets/products/room-spray.jpg",
+      "photoStyle": "cutout"
+    },
+    {
+      "id": "car-perfume",
+      "name": "Car Perfume",
+      "size": "8 ml",
+      "price": 289,
+      "tone": "almond",
+      "desc": "A clip-on scent for the everyday commute.",
+      "photo": "/assets/products/car-perfume.jpg",
+      "photoStyle": "lifestyle"
+    },
+    {
+      "id": "aroma-candle",
+      "name": "Aroma Candle",
+      "size": "100 ml",
+      "price": 490,
+      "tone": "moss",
+      "desc": "A slow-burning soy candle for quiet evenings at home.",
+      "photo": "/assets/products/aroma-candle.jpg",
+      "photoStyle": "cutout"
+    },
+    {
+      "id": "reed-diffuser",
+      "name": "Reed Diffuser",
+      "size": "45 ml",
+      "price": 590,
+      "tone": "plum",
+      "desc": "Continuous fragrance through natural reed sticks.",
+      "photo": "/assets/products/reed-diffuser.jpg",
+      "photoStyle": "cutout"
+    },
+    {
+      "id": "wild-reed-diffuser-150",
+      "name": "Wild Reed Diffuser",
+      "size": "150 ml",
+      "price": 890,
+      "tone": "almond",
+      "desc": "The full-size diffuser for living rooms and entryways.",
+      "photo": "",
+      "photoStyle": "cutout"
+    },
+    {
+      "id": "aroma-oil",
+      "name": "Aroma Oil",
+      "size": "15 ml",
+      "price": 390,
+      "tone": "warmgrey",
+      "desc": "Concentrated oil for your own diffuser or burner.",
+      "photo": "/assets/products/aroma-oil.jpg",
+      "photoStyle": "cutout"
+    },
+    {
+      "id": "aroma-stone-oil",
+      "name": "Aroma Stone & Oil",
+      "size": "15 ml",
+      "price": 590,
+      "tone": "almond",
+      "desc": "Scented stones with oil for drawers, closets and small rooms.",
+      "photo": "/assets/products/aroma-stone-oil.jpg",
+      "photoStyle": "lifestyle"
+    },
+    {
+      "id": "refill-100",
+      "name": "Reed Diffuser Refill",
+      "size": "100 ml",
+      "price": 590,
+      "tone": "moss",
+      "desc": "Top up your reed diffuser without buying a new bottle.",
+      "photo": "/assets/products/refill-100.jpg",
+      "photoStyle": "lifestyle"
+    },
+    {
+      "id": "refill-500",
+      "name": "Reed Diffuser Refill",
+      "size": "500 ml",
+      "price": 1090,
+      "tone": "plum",
+      "desc": "Bulk refill for continuous fragrance across a larger space.",
+      "photo": "/assets/products/refill-500.jpg",
+      "photoStyle": "lifestyle"
+    },
+    {
+      "id": "refill-1000",
+      "name": "Reed Diffuser Refill",
+      "size": "1000 ml",
+      "price": 1090,
+      "tone": "warmgrey",
+      "desc": "Bulk refill for continuous fragrance across a larger space.",
+      "photo": "/assets/products/refill-1000.jpg",
+      "photoStyle": "lifestyle"
+    }
+  ],
+  "scents": [
+    "Wild White Tea",
+    "Holiday Brunch",
+    "Way to the Hill",
+    "Lanna Lantern",
+    "Willow in the Valley",
+    "First Rain Tea",
+    "Morning Ritual",
+    "Mist by the Lake",
+    "The Poet's Garden",
+    "The Rice Season",
+    "The Hidden Kingdom",
+    "The Weaver's House",
+    "The Coachman's Trail"
+  ]
+}

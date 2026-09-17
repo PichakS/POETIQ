@@ -1,4 +1,4 @@
-// Fills every [data-c="path.to.key"] element from content.js. Runs first
+// Fills every [data-c="path.to.key"] element from POETIQ_CONTENT. Runs first
 // so all copy is in place before anything else renders.
 function poetiqApplyContent() {
   if (typeof POETIQ_CONTENT === "undefined") return;
@@ -11,7 +11,7 @@ function poetiqApplyContent() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function poetiqInit() {
   poetiqApplyContent();
 
   // Mobile nav toggle
@@ -65,14 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Shop page: build product grid + wire add-to-cart
   const shopGrid = document.querySelector("[data-shop-grid]");
-  if (shopGrid && typeof POETIQ_PRODUCTS !== "undefined") {
+  if (shopGrid) {
     shopGrid.innerHTML = POETIQ_PRODUCTS.map(
       (p, i) => `
       <article class="product-card">
         ${
           p.photo
             ? `<div class="product-card__media has-photo${p.photoStyle === "lifestyle" ? " is-lifestyle" : ""}">
-                <img src="/assets/products/${p.photo}" alt="${p.name}, ${p.size}">
+                <img src="${p.photo}" alt="${p.name}, ${p.size}">
               </div>`
             : `<div class="product-card__media" style="background:var(--${p.tone})">
                 <div>
@@ -129,4 +129,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   poetiqRenderCart();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  Promise.all([poetiqLoadContent(), poetiqLoadProducts()]).then(([content, products]) => {
+    window.POETIQ_CONTENT = content;
+    window.POETIQ_PRODUCTS = products.products || [];
+    window.POETIQ_SCENTS = products.scents || [];
+    poetiqInit();
+    document.dispatchEvent(new CustomEvent("poetiq:ready"));
+  });
 });
