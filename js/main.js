@@ -81,6 +81,17 @@ function poetiqInit() {
     // track the REAL state so the toggle button always does the right thing
     // next click, instead of trusting whether the panel happens to be open.
     let lastIsPaused = true;
+    let lastKnownGood = { isPaused: true, position: 0 };
+    let leavingPage = false;
+
+    // Navigating away makes the Spotify iframe report one last "paused"
+    // update as it tears down, arriving around the same time as the page
+    // unload. Left alone, that overwrites the "it was playing" state right
+    // before it's needed. Freeze it as soon as unload starts instead.
+    window.addEventListener("beforeunload", () => {
+      leavingPage = true;
+      poetiqSaveSoundState(lastKnownGood.isPaused, lastKnownGood.position);
+    });
 
     function setupController(startPositionMs, autoplay) {
       if (initializing || controller) return;
@@ -95,8 +106,10 @@ function poetiqInit() {
           });
           controller.addListener("playback_update", (e) => {
             lastIsPaused = e.data.isPaused;
-            poetiqSaveSoundState(e.data.isPaused, e.data.position);
             soundToggle.classList.toggle("is-playing", !e.data.isPaused);
+            if (leavingPage) return;
+            lastKnownGood = { isPaused: e.data.isPaused, position: e.data.position };
+            poetiqSaveSoundState(e.data.isPaused, e.data.position);
           });
         });
       };
