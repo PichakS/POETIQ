@@ -17,8 +17,8 @@
       "price": 289,
       "tone": "almond",
       "desc": "A clip-on scent for the everyday commute.",
-      "photo": "/assets/products/car-perfume.jpg",
-      "photoStyle": "lifestyle"
+      "photo": "/assets/products/car-perfume-white.jpg",
+      "photoStyle": "cutout"
     },
     {
       "id": "aroma-candle",
@@ -37,8 +37,8 @@
       "price": 590,
       "tone": "plum",
       "desc": "Continuous fragrance through natural reed sticks.",
-      "photo": "/assets/products/reed-diffuser.jpg",
-      "photoStyle": "scene"
+      "photo": "/assets/products/reed-diffuser-black.jpg",
+      "photoStyle": "cutout"
     },
     {
       "id": "wild-reed-diffuser-150",
