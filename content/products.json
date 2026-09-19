@@ -59,6 +59,16 @@
       "shopPhotoStyle": "lifestyle"
     },
     {
+      "id": "sachet",
+      "name": "Scented Sachet",
+      "size": "30 ml",
+      "price": 490,
+      "tone": "moss",
+      "desc": "A small fabric sachet, scented to keep drawers, closets and small rooms fresh.",
+      "photo": "/assets/products/sachet.jpg",
+      "photoStyle": "lifestyle"
+    },
+    {
       "id": "reed-diffuser-refill",
       "name": "Reed Diffuser Refill",
       "sizes": [
