@@ -239,7 +239,7 @@ p { margin: 0 0 1em; }
   background-image: linear-gradient(180deg, rgba(43, 49, 25, 0.42), rgba(43, 49, 25, 0.82)),
     url("../assets/brand/hero-cover.jpg");
   background-repeat: no-repeat, no-repeat;
-  background-position: 0% 0%, 50% 30%;
+  background-position: 0% 0%, 30% 4%;
   background-size: auto, cover;
   color: var(--frost);
 }
