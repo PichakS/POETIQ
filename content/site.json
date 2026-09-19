@@ -77,7 +77,7 @@
   "contact": {
     "headerEyebrow": "Get in Touch",
     "headerTitle": "Contact Poetiq",
-    "headerText": "Fastest reply is on LINE, that's where we confirm orders and payment, just like during a live show.",
+    "headerText": "Fastest reply is on LINE, that's where we confirm orders and payment.",
     "reachEyebrow": "Reach Us Directly",
     "reachTitle": "Say Hello",
     "companyName": "Poetiq House Co., Ltd.",
@@ -93,7 +93,7 @@
     "headerText": "Submit your order below. We'll message you on LINE or by phone within one business day to confirm payment and shipping.",
     "orderEyebrow": "Your Order",
     "paymentTitle": "How payment works",
-    "paymentText": "Submit your order, then pay using the QR code or bank details below. We'll confirm receipt on LINE and ship once payment is received, the same way we confirm orders during a live show.",
+    "paymentText": "Submit your order, then pay using the QR code or bank details below. We'll confirm receipt on LINE and ship once payment is received.",
     "paymentBankLine": "<strong>Krungsri Bank</strong> &middot; 626-1-42528-6<br>Account name: บจก. โพเอทิค เฮ้าส์ (Poetiq House Co., Ltd.)",
     "deliveryEyebrow": "Delivery Details",
     "deliveryTitle": "Your Information",
@@ -103,7 +103,7 @@
   "orderReceived": {
     "eyebrow": "Thank You",
     "title": "Your Order Is In",
-    "text": "We've received your order details. Message us on LINE now with your name so we can send your PromptPay / bank transfer details and confirm payment quickly, just like during a live show.",
+    "text": "We've received your order details. Message us on LINE now with your name so we can send your PromptPay / bank transfer details and confirm payment quickly.",
     "ctaLine": "Message Us on LINE",
     "ctaShop": "Continue Shopping"
   }

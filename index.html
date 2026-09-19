@@ -47,7 +47,7 @@
     <span class="eyebrow" data-c="home.introEyebrow">A Home Fragrance Brand Inspired by Lanna Heritage</span>
     <p style="font-family:var(--font-heading); font-size:1.35rem; color:var(--moss-dark); line-height:1.5;" data-c="home.introText">
       Poetiq blends the delicate artistry of Lanna pattern with the serenity of Northern Thailand's
-      forests, tea gardens, and lantern-lit evenings — carried into scent for everyday living spaces.
+      forests, tea gardens, and lantern-lit evenings, carried into scent for everyday living spaces.
     </p>
   </div>
 </section>
@@ -69,21 +69,19 @@
 
 <section class="section">
   <div class="container">
-    <div class="grid grid--2" style="align-items:center; gap:56px;">
-      <div class="teaser-grid">
+    <div class="center-copy" style="margin-bottom:48px;">
+      <span class="eyebrow" data-c="home.storiesEyebrow">Scent Stories</span>
+      <h2 data-c="home.storiesTitle">Every Fragrance<br>Carries a Place</h2>
+      <p data-c="home.storiesText">From the highland forests of Chiang Mai to the oolong tea plantations of Chiang Rai and the
+        lantern festival of Sukhothai, each Poetiq scent is built around a memory of Northern Thailand,
+        with its own top, heart, and base notes.</p>
+      <a href="/about.html" class="btn btn--ghost" data-c="home.storiesCta">Read the Stories</a>
+    </div>
+    <div class="teaser-grid">
         <a href="/about.html"><img src="/assets/scents/mist-by-the-lake.jpg" alt="Mist by the Lake" data-media="home-teaser-1"></a>
         <a href="/about.html"><img src="/assets/scents/lanna-lantern.jpg" alt="Lanna Lantern" data-media="home-teaser-2"></a>
         <a href="/about.html"><img src="/assets/scents/wild-white-tea.jpg" alt="Wild White Tea" data-media="home-teaser-3"></a>
       </div>
-      <div>
-        <span class="eyebrow" data-c="home.storiesEyebrow">Scent Stories</span>
-        <h2 data-c="home.storiesTitle">Every Fragrance<br>Carries a Place</h2>
-        <p data-c="home.storiesText">From the highland forests of Chiang Mai to the oolong tea plantations of Chiang Rai and the
-          lantern festival of Sukhothai — each Poetiq scent is built around a memory of Northern Thailand,
-          with its own top, heart, and base notes.</p>
-        <a href="/about.html" class="btn btn--ghost" data-c="home.storiesCta">Read the Stories</a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -181,7 +179,8 @@
           ${
             p.photo
               ? `<div class="product-card__media has-photo${p.photoStyle === "lifestyle" ? " is-lifestyle" : ""}">
-                  <img src="${p.photo}" alt="${p.name}, ${p.size}" style="object-position:${p.photoPosition || "center center"};${p.photoZoom && p.photoZoom !== 1 ? " transform:scale(" + p.photoZoom + ");" : ""}">
+                  ${p.photoStyle === "lifestyle" ? "" : `<div class="product-card__media-bg" style="background-image:url('${p.photo}')"></div>`}
+                <img src="${p.photo}" alt="${p.name}, ${p.size}" style="object-position:${p.photoPosition || "center center"};${p.photoZoom && p.photoZoom !== 1 ? " transform:scale(" + p.photoZoom + ");" : ""}">
                 </div>`
               : `<div class="product-card__media" style="background:var(--${p.tone})">
                   <div>

@@ -271,10 +271,11 @@ p { margin: 0 0 1em; }
   gap: 16px;
   margin: 0 auto 2em;
 }
+.motif-divider .symbol { width: 104px; height: 104px; }
 .motif-divider::before, .motif-divider::after {
   content: "";
   height: 1px;
-  width: 48px;
+  width: 80px;
   background: var(--almond);
   opacity: 0.5;
 }
@@ -342,7 +343,15 @@ p { margin: 0 0 1em; }
   vertical-align: middle;
 }
 
-.product-card__media.has-photo { padding: 0; background: #fff; }
+.product-card__media.has-photo { padding: 0; background: #fff; overflow: hidden; }
+/* Blurred copy of the photo fills any letterbox space around a contain-fit
+   image, so it reads as one scene instead of a photo floating on white. */
+.product-card__media-bg {
+  position: absolute; inset: -24px; z-index: 0;
+  background-size: cover; background-position: center;
+  filter: blur(26px) saturate(1.15); transform: scale(1.08);
+}
+.product-card__media.has-photo img { position: relative; z-index: 1; }
 .product-card__media.has-photo img {
   width: 100%;
   height: 100%;
@@ -443,12 +452,10 @@ select.scent-select {
 
 .teaser-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
-.teaser-grid img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 3/4; }
-.teaser-grid > *:first-child { grid-row: span 2; aspect-ratio: auto; }
-.teaser-grid > *:first-child img { aspect-ratio: 4/5; }
+.teaser-grid img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; }
 
 /* Wraps editable photos so the edit pencil has somewhere to anchor. No
    z-index of its own, so it stays invisible to stacking — the scent-gallery
@@ -730,8 +737,6 @@ select.scent-select {
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .story-card { grid-template-columns: 1fr; gap: 20px; margin-bottom: 56px; }
   .story-card:nth-child(even) .story-card__media { order: 0; }
-  .teaser-grid { grid-template-columns: 1fr 1fr; }
-  .teaser-grid > *:first-child { grid-column: span 2; grid-row: auto; }
   .stockist-list { columns: 1; }
 }
 
@@ -743,6 +748,7 @@ select.scent-select {
   .nav-toggle { display: block; }
   .grid--4, .grid--3 { grid-template-columns: 1fr 1fr; }
   .scent-gallery { grid-template-columns: 1fr 1fr; }
+  .teaser-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .hero { min-height: 92vh; }
   /* Owner-only edit toggle (bottom-left) can otherwise crowd the sound

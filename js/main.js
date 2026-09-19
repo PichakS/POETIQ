@@ -164,6 +164,7 @@ function poetiqInit() {
         ${
           p.photo
             ? `<div class="product-card__media has-photo${p.photoStyle === "lifestyle" ? " is-lifestyle" : ""}">
+                ${p.photoStyle === "lifestyle" ? "" : `<div class="product-card__media-bg" style="background-image:url('${p.photo}')"></div>`}
                 <img src="${p.photo}" alt="${p.name}, ${defaultSize}" style="object-position:${p.photoPosition || "center center"};${p.photoZoom && p.photoZoom !== 1 ? " transform:scale(" + p.photoZoom + ");" : ""}">
               </div>`
             : `<div class="product-card__media" style="background:var(--${p.tone})">

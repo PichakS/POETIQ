@@ -351,6 +351,8 @@
               if (newPath) {
                 product.photo = newPath;
                 imgEl.src = newPath;
+                const bg = imgEl.parentElement.querySelector(".product-card__media-bg");
+                if (bg) bg.style.backgroundImage = 'url("' + newPath + '")';
               }
               product.photoPosition = position;
               product.photoZoom = zoom;
