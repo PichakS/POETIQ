@@ -751,6 +751,15 @@ select.scent-select {
   .teaser-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .hero { min-height: 92vh; }
+  /* .hero__content overrides the container's side padding, so on a phone the
+     text touched the screen edge. */
+  .hero__content { padding: 64px 24px; }
+  /* Two columns leaves each shop card ~130px wide, too narrow for the scent
+     dropdown and quantity buttons, so the shop goes one card per row. */
+  .grid[data-shop-grid] { grid-template-columns: 1fr; }
+  /* Icon-only music button so it stops covering page content. */
+  .sound-toggle { padding: 12px 14px; right: 14px; bottom: 14px; }
+  .sound-toggle > span:last-child { display: none; }
   /* Owner-only edit toggle (bottom-left) can otherwise crowd the sound
      toggle (bottom-right) on narrow phones — stack it higher instead. */
   .poetiq-edit-fab-wrap { bottom: 84px; }
