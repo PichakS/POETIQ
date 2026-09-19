@@ -9,7 +9,7 @@
       "desc": "An instant mist for the room, inspired by highland air.",
       "photo": "/assets/products/room-spray.jpg",
       "photoStyle": "cutout",
-      "shopPhoto": "/assets/products/shop-room-spray.jpg",
+      "shopPhoto": "/assets/products/shop-room-spray-scene.jpg",
       "shopPhotoStyle": "lifestyle"
     },
     {
@@ -43,8 +43,8 @@
       "desc": "Continuous fragrance through natural reed sticks.",
       "photo": "/assets/products/reed-diffuser-clean.jpg",
       "photoStyle": "cutout",
-      "shopPhoto": "/assets/products/reed-diffuser.jpg",
-      "shopPhotoStyle": "scene"
+      "shopPhoto": "/assets/products/shop-reed-diffuser.jpg",
+      "shopPhotoStyle": "lifestyle"
     },
     {
       "id": "aroma-oil",
@@ -57,18 +57,6 @@
       "photoStyle": "cutout",
       "shopPhoto": "/assets/products/shop-aroma-oil.jpg",
       "shopPhotoStyle": "lifestyle"
-    },
-    {
-      "id": "aroma-stone-oil",
-      "name": "Aroma Stone & Oil",
-      "size": "15 ml",
-      "price": 590,
-      "tone": "almond",
-      "desc": "Scented oil for drawers, closets and small rooms.",
-      "photo": "/assets/products/shop-aroma-oil.jpg",
-      "photoStyle": "lifestyle",
-      "photoZoom": 1.5,
-      "photoPosition": "40% 78%"
     },
     {
       "id": "reed-diffuser-refill",
