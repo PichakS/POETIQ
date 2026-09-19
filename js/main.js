@@ -157,15 +157,19 @@ function poetiqInit() {
   if (shopGrid) {
     shopGrid.innerHTML = POETIQ_PRODUCTS.map(
       (p, i) => {
+        // The shop can use a different photo (with a background scene) than the
+        // home page's featured cards, which keep using p.photo / p.photoStyle.
+        const photo = p.shopPhoto || p.photo;
+        const photoStyle = p.shopPhoto ? p.shopPhotoStyle : p.photoStyle;
         const defaultSize = p.size || (p.sizes && p.sizes[0].size) || "";
         const defaultPrice = p.sizes ? p.sizes[0].price : p.price;
         return `
       <article class="product-card">
         ${
-          p.photo
-            ? `<div class="product-card__media has-photo${p.photoStyle === "lifestyle" ? " is-lifestyle" : ""}">
-                ${p.photoStyle !== "scene" ? "" : `<div class="product-card__media-bg" style="background-image:url('${p.photo}')"></div>`}
-                <img src="${p.photo}" alt="${p.name}, ${defaultSize}" style="object-position:${p.photoPosition || "center center"};${p.photoZoom && p.photoZoom !== 1 ? " transform:scale(" + p.photoZoom + ");" : ""}">
+          photo
+            ? `<div class="product-card__media has-photo${photoStyle === "lifestyle" ? " is-lifestyle" : ""}">
+                ${photoStyle !== "scene" ? "" : `<div class="product-card__media-bg" style="background-image:url('${photo}')"></div>`}
+                <img src="${photo}" alt="${p.name}, ${defaultSize}" style="object-position:${p.photoPosition || "center center"};${p.photoZoom && p.photoZoom !== 1 ? " transform:scale(" + p.photoZoom + ");" : ""}">
               </div>`
             : `<div class="product-card__media" style="background:var(--${p.tone})">
                 <div>

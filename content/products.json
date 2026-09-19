@@ -8,7 +8,9 @@
       "tone": "warmgrey",
       "desc": "An instant mist for the room, inspired by highland air.",
       "photo": "/assets/products/room-spray.jpg",
-      "photoStyle": "cutout"
+      "photoStyle": "cutout",
+      "shopPhoto": "/assets/products/shop-room-spray.jpg",
+      "shopPhotoStyle": "lifestyle"
     },
     {
       "id": "car-perfume",
@@ -17,8 +19,8 @@
       "price": 289,
       "tone": "almond",
       "desc": "A clip-on scent for the everyday commute.",
-      "photo": "/assets/products/car-perfume-white.jpg",
-      "photoStyle": "cutout"
+      "photo": "/assets/products/car-perfume.jpg",
+      "photoStyle": "lifestyle"
     },
     {
       "id": "aroma-candle",
@@ -28,7 +30,9 @@
       "tone": "moss",
       "desc": "A slow-burning soy candle for quiet evenings at home.",
       "photo": "/assets/products/aroma-candle.jpg",
-      "photoStyle": "cutout"
+      "photoStyle": "cutout",
+      "shopPhoto": "/assets/products/shop-aroma-candle.jpg",
+      "shopPhotoStyle": "lifestyle"
     },
     {
       "id": "reed-diffuser",
@@ -38,17 +42,9 @@
       "tone": "plum",
       "desc": "Continuous fragrance through natural reed sticks.",
       "photo": "/assets/products/reed-diffuser-clean.jpg",
-      "photoStyle": "cutout"
-    },
-    {
-      "id": "wild-reed-diffuser-150",
-      "name": "Wild Reed Diffuser",
-      "size": "150 ml",
-      "price": 890,
-      "tone": "almond",
-      "desc": "The full-size diffuser for living rooms and entryways.",
-      "photo": "",
-      "photoStyle": "cutout"
+      "photoStyle": "cutout",
+      "shopPhoto": "/assets/products/reed-diffuser.jpg",
+      "shopPhotoStyle": "scene"
     },
     {
       "id": "aroma-oil",
@@ -58,7 +54,9 @@
       "tone": "warmgrey",
       "desc": "Concentrated oil for your own diffuser or burner.",
       "photo": "/assets/products/aroma-oil.jpg",
-      "photoStyle": "cutout"
+      "photoStyle": "cutout",
+      "shopPhoto": "/assets/products/shop-aroma-oil.jpg",
+      "shopPhotoStyle": "lifestyle"
     },
     {
       "id": "aroma-stone-oil",
@@ -67,8 +65,10 @@
       "price": 590,
       "tone": "almond",
       "desc": "Scented stones with oil for drawers, closets and small rooms.",
-      "photo": "/assets/products/aroma-stone-oil.jpg",
-      "photoStyle": "lifestyle"
+      "photo": "/assets/products/shop-aroma-oil.jpg",
+      "photoStyle": "lifestyle",
+      "photoZoom": 1.5,
+      "photoPosition": "40% 78%"
     },
     {
       "id": "reed-diffuser-refill",

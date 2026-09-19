@@ -326,7 +326,7 @@
     const rect = imgEl.getBoundingClientRect();
     openMediaEditor({
       title: "Edit photo",
-      currentSrc: product.photo,
+      currentSrc: product.shopPhoto || product.photo,
       currentPosition: product.photoPosition || "center center",
       currentZoom: product.photoZoom || 1,
       showZoom: true,
@@ -344,12 +344,12 @@
           getFile("content/products.json").then(({ content, sha }) => {
             const data = JSON.parse(base64ToUtf8(content));
             const p = data.products[index];
-            if (newPath) p.photo = newPath;
+            if (newPath) p.shopPhoto = newPath;
             p.photoPosition = position;
             p.photoZoom = zoom;
             return putFile("content/products.json", JSON.stringify(data, null, 2) + "\n", sha, "Update photo for " + p.id).then(() => {
               if (newPath) {
-                product.photo = newPath;
+                product.shopPhoto = newPath;
                 imgEl.src = newPath;
                 const bg = imgEl.parentElement.querySelector(".product-card__media-bg");
                 if (bg) bg.style.backgroundImage = 'url("' + newPath + '")';
