@@ -743,7 +743,9 @@ select.scent-select {
     transform: translateY(-130%); transition: transform 0.25s ease; }
   .site-nav__links.is-open { transform: translateY(0); }
   .nav-toggle { display: block; }
-  .grid--4, .grid--3 { grid-template-columns: 1fr 1fr; }
+  /* One card per row on phones: two columns is ~150px each, too narrow for
+     the price + View button row, which then gets cut off. */
+  .grid--4, .grid--3 { grid-template-columns: 1fr; }
   .scent-gallery { grid-template-columns: 1fr 1fr; }
   .teaser-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
@@ -751,9 +753,6 @@ select.scent-select {
   /* .hero__content overrides the container's side padding, so on a phone the
      text touched the screen edge. */
   .hero__content { padding: 64px 24px; }
-  /* Two columns leaves each shop card ~130px wide, too narrow for the scent
-     dropdown and quantity buttons, so the shop goes one card per row. */
-  .grid[data-shop-grid] { grid-template-columns: 1fr; }
   /* Icon-only music button so it stops covering page content. */
   .sound-toggle { padding: 12px 14px; right: 14px; bottom: 14px; }
   .sound-toggle > span:last-child { display: none; }
