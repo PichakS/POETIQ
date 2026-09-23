@@ -35,6 +35,19 @@
       "shopPhotoStyle": "lifestyle"
     },
     {
+      "id": "body-oil",
+      "name": "Body Oil",
+      "size": "30 ml",
+      "price": 390,
+      "tone": "plum",
+      "desc": "A nourishing body oil with a silky touch and a soft, refined scent. Available in every Poetiq scent.",
+      "photos": [
+        "/assets/products/body-oil-wild-white-tea.jpg",
+        "/assets/products/body-oil-holiday-brunch.jpg"
+      ],
+      "photoStyle": "lifestyle"
+    },
+    {
       "id": "reed-diffuser",
       "name": "Reed Diffuser",
       "size": "45 ml",

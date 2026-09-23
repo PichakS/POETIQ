@@ -166,7 +166,14 @@ function poetiqInit() {
         return `
       <article class="product-card">
         ${
-          photo
+          p.photos
+            ? `<div class="product-card__media has-photo product-card__media--gallery">
+                <div class="product-card__gallery">
+                  ${p.photos.map((src, gi) => `<img src="${src}" alt="${p.name}, ${defaultSize} ${gi + 1}" loading="lazy">`).join("")}
+                </div>
+                ${p.photos.length > 1 ? `<div class="product-card__gallery-dots">${p.photos.map(() => `<span class="product-card__gallery-dot"></span>`).join("")}</div>` : ""}
+              </div>`
+            : photo
             ? `<div class="product-card__media has-photo${photoStyle === "lifestyle" ? " is-lifestyle" : ""}">
                 ${photoStyle !== "scene" ? "" : `<div class="product-card__media-bg" style="background-image:url('${photo}')"></div>`}
                 <img src="${photo}" alt="${p.name}, ${defaultSize}" style="object-position:${p.photoPosition || "center center"};${p.photoZoom && p.photoZoom !== 1 ? " transform:scale(" + p.photoZoom + ");" : ""}">
@@ -210,6 +217,17 @@ function poetiqInit() {
     `;
       }
     ).join("");
+
+    // Highlight the matching dot as a multi-photo gallery is swiped/scrolled.
+    shopGrid.querySelectorAll(".product-card__gallery").forEach((gallery) => {
+      const dots = gallery.parentElement.querySelectorAll(".product-card__gallery-dot");
+      if (!dots.length) return;
+      gallery.addEventListener("scroll", () => {
+        const i = Math.round(gallery.scrollLeft / gallery.clientWidth);
+        dots.forEach((d, di) => d.classList.toggle("is-active", di === i));
+      });
+      dots[0].classList.add("is-active");
+    });
 
     shopGrid.querySelectorAll("[data-size-select]").forEach((select) => {
       select.addEventListener("change", () => {

@@ -506,7 +506,9 @@
         priceEl.classList.add("poetiq-editable");
         priceEl.appendChild(makePencil(() => editProductField(index, "price", priceEl, true), "Edit price"));
       }
-      if (img) {
+      // Multi-photo gallery products (e.g. Body Oil) aren't wired up to the
+      // single-photo editor yet — skip the pencil rather than break on click.
+      if (img && !POETIQ_PRODUCTS[index].photos) {
         const media = card.querySelector(".product-card__media");
         if (media && !media.querySelector(".poetiq-pencil")) {
           media.classList.add("poetiq-editable");
