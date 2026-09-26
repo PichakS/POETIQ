@@ -200,7 +200,7 @@ function poetiqInit() {
           }
           <div class="field-row">
             <select class="scent-select" id="scent-${p.id}">
-              ${POETIQ_SCENTS.map((s) => `<option value="${s}">${s}</option>`).join("")}
+              ${(p.scents || POETIQ_SCENTS).map((s) => `<option value="${s}">${s}</option>`).join("")}
             </select>
           </div>
           <div class="field-row" style="justify-content:space-between;align-items:center;">

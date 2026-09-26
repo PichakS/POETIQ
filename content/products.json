@@ -40,12 +40,16 @@
       "size": "30 ml",
       "price": 490,
       "tone": "plum",
-      "desc": "A nourishing body oil with a silky touch and a soft, refined scent. Available in every Poetiq scent.",
+      "desc": "A nourishing body oil with a silky touch and a soft, refined scent. Available in Wild White Tea and Holiday Brunch.",
       "photos": [
         "/assets/products/body-oil-wild-white-tea.jpg",
         "/assets/products/body-oil-holiday-brunch.jpg"
       ],
-      "photoStyle": "lifestyle"
+      "photoStyle": "lifestyle",
+      "scents": [
+        "Wild White Tea",
+        "Holiday Brunch"
+      ]
     },
     {
       "id": "reed-diffuser",
