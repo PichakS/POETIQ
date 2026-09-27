@@ -90,16 +90,28 @@
       "name": "Reed Diffuser Refill",
       "sizes": [
         {
-          "size": "100 ml",
-          "price": 590
+          "size": "100 ml (Alcohol Base)",
+          "price": 559
         },
         {
-          "size": "500 ml",
-          "price": 1090
+          "size": "100 ml (Oil Base)",
+          "price": 639
         },
         {
-          "size": "1000 ml",
-          "price": 1090
+          "size": "500 ml (Alcohol Base)",
+          "price": 959
+        },
+        {
+          "size": "500 ml (Oil Base)",
+          "price": 1039
+        },
+        {
+          "size": "1000 ml (Alcohol Base)",
+          "price": 1649
+        },
+        {
+          "size": "1000 ml (Oil Base)",
+          "price": 1724
         }
       ],
       "tone": "moss",
